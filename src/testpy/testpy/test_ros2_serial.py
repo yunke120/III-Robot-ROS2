@@ -6,6 +6,8 @@ import serial
 import time
 from threading import Lock
 
+# ls /dev/ttyUSB*
+# sudo chmod a+rw /dev/ttyUSB0
 # ros2 run your_package your_node --ros-args -p your_param:=new_value
 
 class Ros2Serial(Node):
@@ -26,7 +28,7 @@ class Ros2Serial(Node):
 
         self.mutex = Lock()
 
-        print(f"Connecting to port {self.port} at {self.baudrate}.")
+
         self.ser = serial.Serial(
             self.port,
             self.baudrate,
@@ -43,9 +45,9 @@ class Ros2Serial(Node):
     def recv_cmd(self):
         self.mutex.acquire()
         try:
-            data = self.ser.readline().decode('utf-8')
-            num_list = [int(char) for char in data]
-            print(num_list)
+            data = self.ser.readline()
+            hex_list = [hex(c) for c in data]
+            print(hex_list)
         finally:
             self.mutex.release()
 
