@@ -10,7 +10,7 @@ public:
   Test_Sub_MultiUint8():Node("test_sub_MultiUint8")
   {
     RCLCPP_INFO(this->get_logger(), "create subscriber(UInt8_Multi_Array)");
-    subscription_ = this->create_subscription<std_msgs::msg::ByteMultiArray>("/stm32/send", 10,  std::bind(&Test_Sub_MultiUint8::on_cb ,this,std::placeholders::_1));
+    subscription_ = this->create_subscription<std_msgs::msg::ByteMultiArray>("/stm32/recv", 10,  std::bind(&Test_Sub_MultiUint8::on_cb ,this,std::placeholders::_1));
     
   }
 private:

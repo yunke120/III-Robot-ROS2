@@ -18,7 +18,7 @@ private:
 void on_timer() {
     auto msg = std_msgs::msg::ByteMultiArray();
 
-    msg.data = {1,2,3,4,5};
+    msg.data = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
     RCLCPP_INFO(get_logger(), "Publishing: [%d, %d, %d]",msg.data[0], msg.data[1], msg.data[2]);
     publisher_->publish(msg);
 }
