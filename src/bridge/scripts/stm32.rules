@@ -1,0 +1,4 @@
+# set the udev rule , make the device_port be fixed by stm32
+#
+KERNEL=="ttyACM0", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55d4", MODE:="0777", SYMLINK+="stm32"
+
