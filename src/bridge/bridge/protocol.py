@@ -1,4 +1,4 @@
-from enum import Enum, IntEnum
+from enum import Enum
 
 class eDEVICE(Enum):
     DEVNone = 0x00

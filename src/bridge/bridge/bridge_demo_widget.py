@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+这个模块用来测试通过ROS2控制STM32端的界面, 具有控制小车上下左右, 加减速, 以及显示实时速度和电池电压的功能
+
+使用：
+    $ ros2 run bridge bridge_demo_widget
+
+"""
+
 import tkinter as tk
 import rclpy
 from std_msgs.msg import ByteMultiArray
@@ -6,6 +15,7 @@ from bridge.protocol import eDEVICE, eRRobot
 from enum import Enum
 
 def check_data(buf):
+    """ 数据校验 """
     sum_value = 0
     for item in buf[:-2]:  # 排除最后两个元素
         if isinstance(item, Enum):  # 如果是枚举类型，转换为整数
@@ -18,9 +28,17 @@ def check_data(buf):
 
 
 class UInt16Extractor:
+    """ 对大于255的数据需要通过16位数据进行保存
+        单片机接收的是uint8_t类型, 因此需要对数据进行解包, 分为高位和低8位 
+        同时对接收的数据进行封包
+    """
     def __init__(self):
         pass
     def unpack(self, value):
+        """ 解包
+        arg: value
+            value: 大于255的数据
+        """
         if not isinstance(value, int):
             raise ValueError("Value must be an integer.")
         low_byte = value&0xFF
@@ -28,6 +46,11 @@ class UInt16Extractor:
         return low_byte, high_byte
 
     def pack(self, low, high):
+        """ 封包 
+        args:
+            low: 数据低8位
+            high: 数据高8位
+        """
         # 使用 int.from_bytes 将 bytes 转换为整数
         low_value = int.from_bytes(low, byteorder='big')
         high_value = int.from_bytes(high, byteorder='big')
@@ -45,6 +68,7 @@ class BridgeDemoWidget(Node):
         self.velocity = 0.0
         self.voltage = 0.0
     def publish_message(self, cmd):
+        
         if len(cmd) != 12:
             print("\033[91mError: The command length is not equal to 12.\033[0m")
         data_bytes = [i.to_bytes(1, 'big') for i in cmd]
