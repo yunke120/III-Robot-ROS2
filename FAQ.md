@@ -22,3 +22,22 @@
     $ systemctl disable brltty.service
     ```
     再次通过`ls /dev/ttyUSB*`即可查看设备已经存在。
+2. 自动赋予特定USB设备权限
+    创建udev规则，以ch340串口为例
+    ```shell
+    $ cd /etc/udev/rules.d
+    $ touch ch340.rules
+    $ udevadm info -a -n /dev/ttyUSB0
+    ```
+    找到USB设备的供应商ID和产品ID，如
+    ![](asserts/udev.png)
+    在ch340.rules文件中填写以下内容，保存
+    ```shell
+    KERNEL=="ttyUSB*", ATTRS{idVendor}=="1d6b", ATTRS{idProduct}=="0002", MODE:="0777", SYMLINK+="ch340"
+    ```
+    重启服务
+    ```shell
+    sudo service udev reload
+    sudo service udev restart
+    ```
+    将USB拔出再插上，`ls -l /dev/ttyUSB*`就可以看到权限已自动修改

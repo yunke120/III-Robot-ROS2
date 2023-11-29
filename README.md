@@ -27,7 +27,8 @@ $ ros2 run micro_ros_agent micro_ros_agent serial -b 115200 --dev /dev/ttyACM0
 ```
 ![bridge_demo](./asserts/bridge_demo.png)
 
-
+## FAQ
+ - [FAQ](./FAQ.md)
 
 ## Refer
  - [Window SSH Linux](https://elementalgrady.com/posts/ubuntu-2204-enable-ssh/)
