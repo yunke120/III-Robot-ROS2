@@ -4,7 +4,7 @@
 
     <xacro:property name="CAMERA_RADIUS" value="0.07" />
     <xacro:property name="FOOTHOLD_RADIUS" value="0.111" />
-    <xacro:property name="FOOTHOLD_HEIGHT" value="0.005" />
+    <xacro:property name="FOOTHOLD_HEIGHT" value="0.01" />
 
     <link name="foothold_base_1">
         <visual>
@@ -13,6 +13,12 @@
             </geometry>
             <material name="black" />
         </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="${FOOTHOLD_RADIUS}" length="${FOOTHOLD_HEIGHT}"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertial_matrix mass="0.5" radius="${FOOTHOLD_RADIUS}" length="${FOOTHOLD_HEIGHT}"/>
     </link>
 
     <joint name="foothold_base1_2_base_link2" type="fixed">
@@ -29,6 +35,12 @@
             </geometry>
             <material name="black" />
         </visual>
+        <collision>
+            <geometry>
+                <box size="${FOOTHOLD_HEIGHT} 0.05 0.23"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertial_matrix mass="0.1" length="${FOOTHOLD_HEIGHT}" width="0.05" height="0.23"/>
     </link>
     <joint name="foothold_base12_joint" type="fixed">
         <parent link="foothold_base_1"/>
@@ -44,6 +56,12 @@
             </geometry>
             <material name="black" />
         </visual>
+        <collision>
+            <geometry>
+                <box size="0.06 0.05 ${FOOTHOLD_HEIGHT}"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertial_matrix mass="0.1" length="0.06" width="0.05" height="${FOOTHOLD_HEIGHT}"/>
     </link>
     <joint name="foothold_base23_joint" type="fixed">
         <parent link="foothold_base_2"/>
@@ -58,6 +76,12 @@
             </geometry>
             <material name="black" />
         </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.07" length="${FOOTHOLD_HEIGHT}"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertial_matrix mass="0.1" radius="0.07" length="${FOOTHOLD_HEIGHT}"/>
     </link>
     <joint name="foothold_base34_joint" type="fixed">
         <parent link="foothold_base_3"/>
@@ -73,6 +97,12 @@
             </geometry>
             <material name="white" />
         </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.02" length="0.07"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertial_matrix mass="0.1" radius="0.02" length="0.007"/>
     </link>
     <joint name="camera_link2foothold4" type="continuous">
         <parent link="foothold_base_4"/>
@@ -89,6 +119,12 @@
             </geometry>
             <material name="white"/>
         </visual>
+        <collision>
+            <geometry>
+                <sphere radius="${CAMERA_RADIUS}"/>
+            </geometry>
+        </collision>
+        <xacro:sphere_inertial_matrix mass="5" radius="${CAMERA_RADIUS}" />
     </link>
     <joint name="camera_link2camera" type="fixed">
         <parent link="camera_link"/>
@@ -96,4 +132,22 @@
         <origin xyz="0.0 0.0 ${-(CAMERA_RADIUS+0.035)}"/>
     </joint>
 
+    <gazebo reference="foothold_base_1">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="foothold_base_2">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="foothold_base_3">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="foothold_base_4">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="camera_link">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="camera">
+        <material>Gazebo/White</material>
+    </gazebo>
 </robot>

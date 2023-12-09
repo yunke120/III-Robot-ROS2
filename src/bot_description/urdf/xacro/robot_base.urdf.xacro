@@ -37,6 +37,12 @@
                 <sphere radius="0.001"/>
             </geometry>
         </visual>
+        <collision>
+            <geometry>
+                <sphere radius="0.001"/>
+            </geometry>
+        </collision>
+        <xacro:sphere_inertial_matrix mass="0.001" radius="0.001" />
     </link>
 
     <!-- 3 set base_link -->
@@ -47,6 +53,12 @@
             </geometry>
             <material name="white"/>
         </visual>
+        <collision>
+            <geometry>
+                <box size="${CAR_LENGTH} ${CAR_WIDTH} ${CAR_HEIGHT}"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertial_matrix mass="5" length="${CAR_LENGTH}" width="${CAR_WIDTH}" height="${CAR_HEIGHT}" />
     </link>
 
     <!-- 4 connect base_footprint with base_link -->
@@ -56,6 +68,10 @@
         <!-- 车体高度+离地间距 = 0.07/2 + 0.015 = 0.05 -->
         <origin xyz="0.0 0.0 ${CAR_HEIGHT/2+DISTANCE}"/>
     </joint>
+
+    <gazebo reference="base_link">
+        <material>Gazebo/White</material>
+    </gazebo>
 
     <!-- 5 定义车轮相关的宏 -->
     <!-- 宏函数创建规则：
@@ -71,7 +87,18 @@
                 <material name="black"/>
                 <origin rpy="${PI/2} 0.0 0.0"/> 
             </visual>
+            <collision>
+                <geometry>
+                    <cylinder radius="${WHEEL_RADIUS}" length="${WHEEL_LEHGTH}"/>
+                </geometry>
+                <origin rpy="${PI/2} 0.0 0.0"/> 
+            </collision>
+            <xacro:cylinder_inertial_matrix mass="1" radius="${WHEEL_RADIUS}" length="${WHEEL_LEHGTH}" />
         </link>
+
+        <gazebo reference="${link_name}">
+            <material>Gazebo/Black</material>
+        </gazebo>
     
         <joint name="${link_name}2base_link" type="continuous">
             <parent link="base_link"/>
@@ -90,7 +117,17 @@
                 <material name="black" />
                 <origin rpy="${PI/2} 0.0 0.0"/>
             </visual>
+            <collision>
+                <geometry>
+                    <cylinder radius="0.01" length="${WHEEL_CAR_DISTANCE}"/>
+                </geometry>
+                <origin rpy="${PI/2} 0.0 0.0"/>
+            </collision>
+            <xacro:cylinder_inertial_matrix mass="1" radius="0.01" length="${WHEEL_CAR_DISTANCE}" />
         </link>
+        <gazebo reference="${link_name}_link">
+            <material>Gazebo/Black</material>
+        </gazebo>
         <joint name="${link_name}_joint" type="fixed">
             <parent link="base_link"/>
             <child link="${link_name}_link"/>
@@ -107,7 +144,17 @@
                 <material name="black" />
                 <origin rpy="0.0 0.0 0.0"/>
             </visual>
+            <collision>
+                <geometry>
+                    <box size="0.01 0.01 0.16"/>
+                </geometry>
+                <origin rpy="0.0 0.0 0.0"/>
+            </collision>
+            <xacro:box_inertial_matrix mass="1" length="0.01" width="0.01" height="0.16" />
         </link>
+        <gazebo reference="${link_name}_pillar">
+            <material>Gazebo/Black</material>
+        </gazebo>
         <joint name="${link_name}_pillar2base_joint" type="fixed">
             <parent link="base_link"/>
             <child link="${link_name}_pillar"/>
@@ -129,10 +176,17 @@
                 <box size="${CAR_LENGTH} ${CAR_WIDTH} 0.005"/>
             </geometry>
             <material name="white"/>
-            
         </visual>
+        <collision>
+            <geometry>
+                <box size="${CAR_LENGTH} ${CAR_WIDTH} 0.005"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertial_matrix mass="1" length="${CAR_LENGTH}" width="${CAR_WIDTH}" height="0.005" />
     </link>
-
+    <gazebo reference="base_link_2">
+        <material>Gazebo/White</material>
+    </gazebo>
     <joint name="base_link2base_link_2" type="fixed">
         <parent link="base_link"/>
         <child link="base_link_2"/>

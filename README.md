@@ -1,12 +1,21 @@
 # III-Robot-ROS2
 
+## Getting start
 
-## robot_model
+### Visualize the robot
+#### In rviz2
 ```shell
-$ colcon build --packages-select robot_model
-$ ros2 launch robot_model display.launch.py
+$ ros2 launch bot_bringup rviz2.launch.py
 ```
 ![robot_model](./asserts/robot_model.png)
+
+In gazebo
+```shell
+$ ros2 launch bot_bringup gazebo.launch.py
+```
+![robot_model](./asserts/gazebo_1.jpg)
+
+
 
 ## bridge
 
@@ -32,3 +41,4 @@ $ ros2 run micro_ros_agent micro_ros_agent serial -b 115200 --dev /dev/ttyACM0
 
 ## Refer
  - [Window SSH Linux](https://elementalgrady.com/posts/ubuntu-2204-enable-ssh/)
+ - [Gazebo Materials](http://wiki.ros.org/simulator_gazebo/Tutorials/ListOfMaterials)
