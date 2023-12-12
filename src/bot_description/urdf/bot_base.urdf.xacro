@@ -1,0 +1,213 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- 需要声明变量 -->
+    <xacro:property name="PI" value="3.141592653" />
+    <!-- 离地间距 -->
+    <xacro:property name="z_offset" value="0.037" />
+
+    <!-- color define -->
+    <material name="white">
+        <color rgba="0.7 0.7 0.7 0.8"/>
+    </material>
+    <material name="black">
+        <color rgba="0.2 0.2 0.2 0.7"/>
+    </material>
+    <material name="red">
+        <color rgba="0.8 0.0 0.0 0.7"/>
+    </material>
+
+
+    <!-- 底盘参数 -->
+    <xacro:property name="bot_length" value="0.387" />
+    <xacro:property name="bot_width" value="0.238" /> 
+    <xacro:property name="bot_height" value="0.003" />
+    <xacro:property name="bot_mass" value="0.5" />
+    <!-- pilllar parameters -->
+    <xacro:property name="pillar_length" value="0.02" />
+    <xacro:property name="pillar_width" value="0.02" />
+    <xacro:property name="pillar_height_1" value="0.06" />
+    <xacro:property name="pillar_height_2" value="0.15" />
+    <xacro:property name="pillar_mass_1" value="0.02" />
+    <xacro:property name="pillar_mass_2" value="0.05" />
+
+    <!-- wheel parameters -->
+    <xacro:property name="wheel_radius" value="0.0635" />
+    <xacro:property name="wheel_length" value="0.05" />
+    <xacro:property name="wheel_mass" value="0.5" />
+    <!-- wheel joint offset -->
+    <xacro:property name="wheel_base_dis" value="0.03" />
+    <xacro:property name="wheel_joint_x" value="${bot_length/2 - 0.045}" />
+    <xacro:property name="wheel_joint_y" value="${bot_width/2 + wheel_base_dis + wheel_length/2}" />
+    <xacro:property name="wheel_joint_z" value="${wheel_radius}" />
+
+    <!-- motor parameters -->
+    <xacro:property name="motor_radius" value="${wheel_radius-z_offset-bot_height}" />
+    <xacro:property name="motor_length" value="0.12" />
+    <xacro:property name="motor_mass" value="0.3" />
+
+    <!-- 定义三个底盘  base_link_1 base_link_2 base_link_3-->
+    <link name="base_link_1">
+        <visual>
+            <geometry>
+                <box size="${bot_length} ${bot_width} ${bot_height}"/>
+            </geometry>
+            <origin xyz="0.0 0.0 ${z_offset+bot_height/2}"/>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${bot_length} ${bot_width} ${bot_height}"/>
+            </geometry>
+            <origin xyz="0.0 0.0 ${z_offset}"/>
+        </collision>
+        <xacro:box_inertial_matrix mass="${bot_mass}" length="${bot_length}" width="${bot_width}" height="${bot_height}" />
+    </link>
+
+    <link name="base_link_2">
+        <visual>
+            <geometry>
+                <box size="${bot_length} ${bot_width} ${bot_height}"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${bot_length} ${bot_width} ${bot_height}"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertial_matrix mass="${bot_mass}" length="${bot_length}" width="${bot_width}" height="${bot_height}" />
+    </link>
+
+    <link name="base_link_3">
+        <visual>
+            <geometry>
+                <box size="${bot_length} ${bot_width} ${bot_height}"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${bot_length} ${bot_width} ${bot_height}"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertial_matrix mass="${bot_mass}" length="${bot_length}" width="${bot_width}" height="${bot_height}" />
+    </link>
+
+    <joint name="base12_joint" type="fixed">
+        <parent link="base_link_1"/>
+        <child link="base_link_2"/>
+        <origin xyz="0.0 0.0 ${pillar_height_1+z_offset+bot_height/2*3}"/>
+    </joint>
+
+    <joint name="base23_joint" type="fixed">
+        <parent link="base_link_2"/>
+        <child link="base_link_3"/>
+        <origin xyz="0.0 0.0 ${pillar_height_2+bot_height}"/>
+    </joint>
+
+
+    <!-- wheel -->
+    <xacro:macro name="wheel_func" params="link_name front_flag left_flag">
+        <!-- wheel -->
+        <link name="${link_name}">
+            <visual>
+                <geometry>
+                    <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
+                </geometry>
+                <material name="black"/>
+                <origin rpy="${PI/2} 0.0 0.0"/> 
+            </visual>
+            <collision>
+                <geometry>
+                    <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
+                </geometry>
+                <origin rpy="${PI/2} 0.0 0.0"/> 
+            </collision>
+            <xacro:cylinder_inertial_matrix mass="${wheel_mass}" radius="${wheel_radius}" length="${wheel_length}" />
+        </link>
+
+        <joint name="${link_name}_joint" type="continuous">
+            <parent link="base_link_1"/>
+            <child link="${link_name}"/> 
+            <origin xyz="${wheel_joint_x * front_flag} ${wheel_joint_y * left_flag} ${wheel_joint_z}"/>
+            <axis xyz="0 1 0"/>
+        </joint>
+
+
+        <!-- pillar -->
+        <link name="${link_name}_p1">
+            <visual>
+                <geometry>
+                    <box size="${pillar_length} ${pillar_width} ${pillar_height_1}"/>
+                </geometry>
+                <material name="black"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <box size="${pillar_length} ${pillar_width} ${pillar_height_1}"/>
+                </geometry>
+            </collision>
+            <xacro:box_inertial_matrix mass="${pillar_mass_1}" length="${pillar_length}" width="${pillar_width}" height="${pillar_height_1}" />
+        </link>
+
+        <link name="${link_name}_p2">
+            <visual>
+                <geometry>
+                    <box size="${pillar_length} ${pillar_width} ${pillar_height_2}"/>
+                </geometry>
+                <material name="black"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <box size="${pillar_length} ${pillar_width} ${pillar_height_2}"/>
+                </geometry>
+            </collision>
+            <xacro:box_inertial_matrix mass="${pillar_mass_2}" length="${pillar_length}" width="${pillar_width}" height="${pillar_height_2}" />
+        </link>
+
+        <joint name="${link_name}_p1base_joint" type="fixed">
+            <parent link="base_link_1"/>
+            <child link="${link_name}_p1"/>
+            <origin xyz="${(bot_length/2-pillar_length/2) * front_flag} ${(bot_width/3) * left_flag} ${z_offset+bot_height+pillar_height_1/2}"/>
+        </joint>
+
+        <joint name="${link_name}_p2base_joint" type="fixed">
+            <parent link="base_link_2"/>
+            <child link="${link_name}_p2"/>
+            <origin xyz="${(bot_length/2-pillar_length/2*3) * front_flag} ${(bot_width/2-pillar_width/2) * left_flag} ${pillar_height_2/2+bot_height/2}"/>
+        </joint>
+
+        <!-- motor -->
+        <link name="${link_name}_motor">
+            <visual>
+                <geometry>
+                    <cylinder radius="${motor_radius}" length="${motor_length}"/>
+                </geometry>
+                <material name="red"/>
+                <origin rpy="${PI/2} 0.0 0.0"/> 
+            </visual>
+            <collision>
+                <geometry>
+                    <cylinder radius="${motor_radius}" length="${motor_length}"/>
+                </geometry>
+                <origin rpy="${PI/2} 0.0 0.0"/> 
+            </collision>
+            <xacro:cylinder_inertial_matrix mass="${motor_mass}" radius="${motor_radius}" length="${motor_length}" />
+        </link>
+
+        <joint name="${link_name}_motor_joint" type="fixed">
+            <parent link="base_link_1"/>
+            <child link="${link_name}_motor"/> 
+            <origin xyz="${wheel_joint_x * front_flag} ${((bot_width-motor_length)/2+wheel_base_dis) * left_flag} ${wheel_joint_z}"/>
+            <axis xyz="0 1 0"/>
+        </joint>
+
+    </xacro:macro>
+
+    <xacro:wheel_func link_name="front_left" front_flag="1" left_flag="1"/>
+    <xacro:wheel_func link_name="front_right" front_flag="1" left_flag="-1"/>
+    <xacro:wheel_func link_name="back_left" front_flag="-1" left_flag="1"/>
+    <xacro:wheel_func link_name="back_right" front_flag="-1" left_flag="-1"/>
+
+
+</robot>

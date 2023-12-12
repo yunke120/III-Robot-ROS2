@@ -41,3 +41,11 @@
     sudo service udev restart
     ```
     将USB拔出再插上，`ls -l /dev/ttyUSB*`就可以看到权限已自动修改
+3. gazebo 安装  
+    ```shell
+    $ sudo apt install ros-humble-gazebo-ros-pkgs
+    $ sudo apt install ros-humble-gazebo-msgs
+    $ sudo apt install ros-humble-gazebo-plugins
+    $ sudo apt install ros-humble-gazebo-ros2-control
+    $ sudo apt install ros-humble-teleop-twist-keyboard 
+    ```

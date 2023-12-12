@@ -1,0 +1,68 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- color definition -->
+    <!--chassis  -->
+    <gazebo reference="base_link_1">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="base_link_2">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="base_link_3">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <!-- wheel -->
+    <gazebo reference="front_left">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="front_right">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="back_left">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="back_right">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <!-- pillar -->
+    <gazebo reference="front_left_p1">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="front_right_p1">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="back_left_p1">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="back_right_p1">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference="front_left_p2">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="front_right_p2">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="back_left_p2">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="back_right_p2">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <!-- motor -->
+    <gazebo reference="front_left_motor">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+    <gazebo reference="front_right_motor">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+    <gazebo reference="back_left_motor">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+    <gazebo reference="back_right_motor">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+
+    
+</robot>

@@ -10,7 +10,7 @@ from launch.substitutions import LaunchConfiguration
 
 def generate_launch_description():
 
-    model = DeclareLaunchArgument(name="model", default_value=get_package_share_directory("bot_description") + "/urdf/xacro/robot.urdf.xacro")
+    model = DeclareLaunchArgument(name="model", default_value=get_package_share_directory("bot_description") + "/urdf/bot.urdf.xacro")
     p_value = ParameterValue(Command(["xacro ", LaunchConfiguration("model")]))
 
     robot_state_pub = Node(
@@ -29,7 +29,7 @@ def generate_launch_description():
             executable='rviz2',
             name='rviz2',
             output='screen',
-            arguments=['-d', get_package_share_directory("bot_description") + "/rviz/urdf.rviz"])
+            arguments=['-d', get_package_share_directory("bot_description") + "/rviz/bot.rviz"])
 
 
     return LaunchDescription([model, rviz2, robot_state_pub, joint_state_pub])

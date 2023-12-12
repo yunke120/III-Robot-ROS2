@@ -9,12 +9,10 @@ from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.substitutions import LaunchConfiguration
 
 def generate_launch_description():
-    model = DeclareLaunchArgument(name="model", 
-                                  default_value=get_package_share_directory("bot_description") + "/urdf/xacro/robot.urdf.xacro",
-                                  description='Absolute path to robot xacro file')
+    model = DeclareLaunchArgument(name="model", default_value=get_package_share_directory("bot_description") + "/urdf/bot.urdf.xacro")
     p_value = ParameterValue(Command(["xacro ", LaunchConfiguration("model")]))
 
-    command = ExecuteProcess(
+    gazebo = ExecuteProcess(
         cmd=[
             'gazebo', '--verbose', '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so'
         ],
@@ -40,7 +38,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        command,
+        gazebo,
         model,
         robot_state_pub,
         joint_state_pub,
