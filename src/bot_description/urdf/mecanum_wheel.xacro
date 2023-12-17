@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <!-- Properties -->
+    <xacro:property name="wheel_radius" value="0.0635" />
+    <xacro:property name="wheel_width" value="0.05" />
+    <xacro:property name="wheel_mass" value="0.5" />
+
+    <xacro:property name="roller_mass" value="0.02"/> 
+    <xacro:property name="roller_radius" value="0.008"/>
+    <xacro:property name="roller_length" value="0.046"/>
+    <xacro:property name="roller_number" value="12"/>
+
+
+    <!-- Mecanum Wheel Macro -->
+    <xacro:macro name="mecanum_wheel" params="name roller_angle">
+
+        <!-- Derived Properties -->
+        <xacro:property name="I_wheel_xx_yy" value="0.0250833333333333"/>
+        <xacro:property name="I_wheel_zz" value="0.0100000000000000"/>
+        <xacro:property name="I_roller_xx_yy" value="0.0008750000000000"/>
+        <xacro:property name="I_roller_zz" value="0.0002000000000000"/>
+
+        <!-- Main Wheel Body -->
+        <link name="${name}">
+        <visual>
+            <geometry>
+            <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+            </geometry>
+            <material name="white">
+                        <color rgba="1 1 0.9 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+            <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="${wheel_mass}"/>
+            <inertia ixx="${I_wheel_xx_yy}" ixy="0" ixz="0" iyy="${I_wheel_xx_yy}" iyz="0" izz="${I_wheel_zz}"/>
+        </inertial>
+        </link>
+
+        <!-- Roller Macro -->
+        <xacro:macro name="roller" params="name parent angle">
+            <link name="${name}">
+                <visual>
+                    <geometry>
+                    <cylinder radius="${roller_radius}" length="${roller_length}"/>
+                    </geometry>
+                    <material name="black">
+                        <color rgba="0.1 0.1 0.1 1"/>
+                    </material>
+                </visual>
+                <collision>
+                    <geometry>
+                    <cylinder radius="${roller_radius}" length="${roller_length}"/>
+                    </geometry>
+                </collision>
+                <inertial>
+                    <mass value="${roller_mass}"/>
+                    <inertia ixx="${I_roller_xx_yy}" ixy="0" ixz="0" iyy="${I_roller_xx_yy}" iyz="0" izz="${I_roller_zz}"/>
+                </inertial>
+            </link>
+
+            <joint name="${name}_joint" type="continuous">
+                <parent link="${parent}"/> 
+                <child link="${name}"/>  
+                <origin 
+                    xyz="${wheel_radius*cos(angle)} ${wheel_radius*sin(angle)} 0"
+                    rpy="${roller_angle} 0 ${angle}"/>
+                <axis xyz="0 0 1"/>
+            </joint>
+        </xacro:macro>
+
+    <!-- Rollers -->
+    <xacro:roller name="${name}_roller_1" parent="${name}" angle="0"/>
+    <xacro:roller name="${name}_roller_2" parent="${name}" angle="${1*2*pi/roller_number}"/>
+    <xacro:roller name="${name}_roller_3" parent="${name}" angle="${2*2*pi/roller_number}"/>
+    <xacro:roller name="${name}_roller_4" parent="${name}" angle="${3*2*pi/roller_number}"/>
+    <xacro:roller name="${name}_roller_5" parent="${name}" angle="${4*2*pi/roller_number}"/>
+    <xacro:roller name="${name}_roller_6" parent="${name}" angle="${5*2*pi/roller_number}"/>
+    <xacro:roller name="${name}_roller_7" parent="${name}" angle="${6*2*pi/roller_number}"/>
+    <xacro:roller name="${name}_roller_8" parent="${name}" angle="${7*2*pi/roller_number}"/>
+    <xacro:roller name="${name}_roller_9" parent="${name}" angle="${8*2*pi/roller_number}"/>
+    <xacro:roller name="${name}_roller_10" parent="${name}" angle="${9*2*pi/roller_number}"/>
+    <xacro:roller name="${name}_roller_11" parent="${name}" angle="${10*2*pi/roller_number}"/>
+    <xacro:roller name="${name}_roller_12" parent="${name}" angle="${11*2*pi/roller_number}"/>
+  </xacro:macro>
+
+</robot>

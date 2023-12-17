@@ -12,16 +12,16 @@
     </gazebo>
     <!-- wheel -->
     <gazebo reference="front_left">
-        <material>Gazebo/Black</material>
+        <material>Gazebo/White</material>
     </gazebo>
     <gazebo reference="front_right">
-        <material>Gazebo/Black</material>
+        <material>Gazebo/White</material>
     </gazebo>
     <gazebo reference="back_left">
-        <material>Gazebo/Black</material>
+        <material>Gazebo/White</material>
     </gazebo>
     <gazebo reference="back_right">
-        <material>Gazebo/Black</material>
+        <material>Gazebo/White</material>
     </gazebo>
     <!-- pillar -->
     <gazebo reference="front_left_p1">
@@ -62,6 +62,49 @@
     <gazebo reference="back_right_motor">
         <material>Gazebo/FlatBlack</material>
     </gazebo>
+    <!-- roller -->
+    <xacro:macro name="gazebo_roller_color" params="link_name">
+        <gazebo reference="${link_name}_roller_1">
+            <material>Gazebo/Black</material>
+        </gazebo>
+        <gazebo reference="${link_name}_roller_2">
+            <material>Gazebo/Black</material>
+        </gazebo>
+        <gazebo reference="${link_name}_roller_3">
+            <material>Gazebo/Black</material>
+        </gazebo>
+        <gazebo reference="${link_name}_roller_4">
+            <material>Gazebo/Black</material>
+        </gazebo>
+        <gazebo reference="${link_name}_roller_5">
+            <material>Gazebo/Black</material>
+        </gazebo>
+        <gazebo reference="${link_name}_roller_6">
+            <material>Gazebo/Black</material>
+        </gazebo>
+        <gazebo reference="${link_name}_roller_7">
+            <material>Gazebo/Black</material>
+        </gazebo>
+        <gazebo reference="${link_name}_roller_8">
+            <material>Gazebo/Black</material>
+        </gazebo>
+        <gazebo reference="${link_name}_roller_9">
+            <material>Gazebo/Black</material>
+        </gazebo>
+        <gazebo reference="${link_name}_roller_10">
+            <material>Gazebo/Black</material>
+        </gazebo>
+        <gazebo reference="${link_name}_roller_11">
+            <material>Gazebo/Black</material>
+        </gazebo>
+        <gazebo reference="${link_name}_roller_12">
+            <material>Gazebo/Black</material>
+        </gazebo>
+    </xacro:macro>
+    <xacro:gazebo_roller_color link_name="front_left"/>
+    <xacro:gazebo_roller_color link_name="front_right"/>
+    <xacro:gazebo_roller_color link_name="back_left"/>
+    <xacro:gazebo_roller_color link_name="back_right"/>
 
 
     

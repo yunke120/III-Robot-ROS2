@@ -1,51 +1,51 @@
 controller_manager:
   ros__parameters:
-    update_rate: 100  # Hz
+    update_rate: 100  # 控制器的更新频率，单位是Hz，表示控制器每秒钟执行的次数。
 
-    joint_state_broadcaster:
-      type: joint_state_broadcaster/JointStateBroadcaster
+    joint_state_broadcaster:  # 关节状态广播器的配置。
+      type: joint_state_broadcaster/JointStateBroadcaster # 使用的关节状态广播器的类型。
 
-    diffbot_base_controller:
-      type: diff_drive_controller/DiffDriveController
+    diffbot_base_controller:  # 差分驱动机器人控制器的配置。
+      type: diff_drive_controller/DiffDriveController # 使用的差分驱动机器人控制器的类型。
 
 diffbot_base_controller:
   ros__parameters:
-    left_wheel_names: ["front_left_joint","back_left_joint"]
-    right_wheel_names: ["front_right_joint","back_right_joint"]
-    use_sim_time: true
+    left_wheel_names: ["front_left_joint","back_left_joint"]  # 左侧轮子的关节名称。
+    right_wheel_names: ["front_right_joint","back_right_joint"] # 右侧轮子的关节名称。
+    use_sim_time: true  # 如果在ROS中使用仿真时间，设置为true。
 
-    wheel_separation: 0.35
-    wheel_radius: 0.0635
+    wheel_separation: 0.35  # 轮子之间的距离。
+    wheel_radius: 0.0635    # 轮子的半径。
 
-    publish_rate: 50.0
-    odom_frame_id: odom
-    base_frame_id: base_link_1
+    publish_rate: 50.0      # 控制器发布运动命令的频率，单位是Hz。
+    odom_frame_id: odom     # Odometry消息的frame_id。
+    base_frame_id: base_link_1  # 机器人底盘的frame_id。
 
-    cmd_vel_timeout: 0.5
-    use_stamped_vel: false
+    cmd_vel_timeout: 0.5        # 如果在此时间内未收到cmd_vel（运动命令）消息，则停止机器人。
+    use_stamped_vel: false      # 如果为true，则期望velocities消息带有时间戳。
 
-    pose_covariance_diagonal : [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
-    twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
+    pose_covariance_diagonal : [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]  # 机器人位姿的协方差矩阵对角线。
+    twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]  # 机器人速度的协方差矩阵对角线。
 
-    open_loop: true
-    enable_odom_tf: true
+    open_loop: true       # 如果为true，将使用开环运动。
+    enable_odom_tf: true  # 如果为true，将发布odometry的TF变换。
 
-    linear.x.has_velocity_limits: true
-    linear.x.has_acceleration_limits: true
-    linear.x.has_jerk_limits: false
-    linear.x.max_velocity: 1.0
-    linear.x.min_velocity: -1.0
-    linear.x.max_acceleration: 1.0
-    linear.x.max_jerk: 0.0
-    linear.x.min_jerk: 0.0
+    linear.x.has_velocity_limits: true      # 启用线速度的限制。
+    linear.x.has_acceleration_limits: true  # 启用线速度的加速度限制。
+    linear.x.has_jerk_limits: false         # 启用线速度的jerk（加加速度）限制。
+    linear.x.max_velocity: 1.0              # 线速度的最大值。
+    linear.x.min_velocity: -1.0             # 线速度的最小值。
+    linear.x.max_acceleration: 1.0          # 线速度的最大加速度。
+    linear.x.max_jerk: 0.0                  # 线速度的最大jerk。
+    linear.x.min_jerk: 0.0                  # 线速度的最小jerk。
 
-    angular.z.has_velocity_limits: true
-    angular.z.has_acceleration_limits: true
-    angular.z.has_jerk_limits: false
-    angular.z.max_velocity: 1.0
-    angular.z.min_velocity: -1.0
-    angular.z.max_acceleration: 1.0
-    angular.z.min_acceleration: -1.0
-    angular.z.max_jerk: 0.0
-    angular.z.min_jerk: 0.0
+    angular.z.has_velocity_limits: true       # 启用角速度的限制。
+    angular.z.has_acceleration_limits: true   # 启用角速度的加速度限制。
+    angular.z.has_jerk_limits: false          # 启用角速度的jerk（加加速度）限制。
+    angular.z.max_velocity: 1.0               # 角速度的最大值。
+    angular.z.min_velocity: -1.0              # 角速度的最小值。
+    angular.z.max_acceleration: 1.0           # 角速度的最大加速度。
+    angular.z.min_acceleration: -1.0          # 角速度的最小加速度。
+    angular.z.max_jerk: 0.0                   # 角速度的最大jerk。
+    angular.z.min_jerk: 0.0                   # 角速度的最小jerk。
 

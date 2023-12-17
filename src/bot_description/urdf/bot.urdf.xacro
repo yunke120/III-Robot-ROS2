@@ -1,5 +1,6 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="bot">
     <xacro:include filename="inertia.urdf.xacro"/>
+    <xacro:include filename="mecanum_wheel.xacro"/>
     <xacro:include filename="bot_base.urdf.xacro"/>
     <xacro:include filename="bot_gazebo.urdf.xacro"/>
 
