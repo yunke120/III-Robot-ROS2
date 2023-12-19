@@ -14,3 +14,7 @@
 	path = src/sllidar_ros2
 	url = https://github.com/Slamtec/sllidar_ros2.git
 	branch = main
+[submodule "src/gazebo_mecanum_plugins"]
+	path = src/gazebo_mecanum_plugins
+	url = https://github.com/qaz9517532846/gazebo_mecanum_plugins.git
+	branch = ros2-foxy
