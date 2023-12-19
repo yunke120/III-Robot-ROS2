@@ -7,7 +7,7 @@
 ```shell
 $ ros2 launch bot_bringup rviz2.launch.py
 ```
-![robot_model](./asserts/robot_model.png)
+![robot_model](./asserts/rviz2.png)
 
 In gazebo
 ```shell
@@ -15,7 +15,16 @@ $ ros2 launch bot_bringup gazebo.launch.py
 ```
 ![robot_model](./asserts/gazebo_1.jpg)
 
-
+### Control the robot
+shell 1
+```shell
+$ ros2 launch bot_bringup gazebo_control.launch.py
+```
+shell 2
+```shell
+$ ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diffbot_base_controller/cmd_vel_unstamped
+```
+![gazebo_empty_world](./asserts/gazebo_empty_world.png)
 
 ## bridge
 
