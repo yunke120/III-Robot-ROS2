@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="alpha" value="0.8" />
+
+    <material name="red">           <color rgba="${255/255}  ${0/255  } ${0/255  }  ${alpha}"/>    </material>
+    <material name="redbright">     <color rgba="${255/255}  ${51/255 } ${51/255 }  ${alpha}"/>    </material>
+    <material name="green">         <color rgba="${0/255  }  ${255/255} ${0/255  }  ${alpha}"/>    </material>
+    <material name="blue">          <color rgba="${0/255  }  ${0/255  } ${255/255}  ${alpha}"/>    </material>
+    <material name="skyblue">       <color rgba="${135/255}  ${206/255} ${250/255}  ${alpha}"/>    </material>
+    <material name="yellow">        <color rgba="${255/255}  ${255/255} ${0/255  }  ${alpha}"/>    </material>
+    <material name="zincyellow">    <color rgba="${255/255}  ${227/255} ${66/255 }  ${alpha}"/>    </material>
+    <material name="darkyellow">    <color rgba="${204/255}  ${204/255} ${0/255  }  ${alpha}"/>    </material>
+    <material name="purple">        <color rgba="${128/255}  ${0/255  } ${128/255}  ${alpha}"/>    </material>
+    <material name="turquoise">     <color rgba="${64/255 }  ${224/255} ${208/255}  ${alpha}"/>    </material>
+    <material name="orange">        <color rgba="${255/255}  ${165/255} ${0/255  }  ${alpha}"/>    </material>
+    <material name="indigo">        <color rgba="${75/255 }  ${0/255  } ${130/255}  ${alpha}"/>    </material>
+    <material name="white">         <color rgba="${255/255}  ${255/255} ${255/255}  ${alpha}"/>    </material>
+    <material name="black">         <color rgba="${0/255  }  ${0/255  } ${0/255  }  ${alpha}"/>    </material>
+    <material name="flatblack">     <color rgba="${5/255  }  ${5/255  } ${5/255  }  ${alpha}"/>    </material>
+    <material name="grey">          <color rgba="${128/255}  ${128/255} ${128/255}  ${alpha}"/>    </material>
+    <material name="darkgrey">      <color rgba="${64/255 }  ${64/255 } ${64/255 }  ${alpha}"/>    </material>
+
+</robot>
+
+<!-- 
+
+
+    红色 (Red): RGB(255, 0, 0)
+    亮红色 (RedBright): RGB(255, 51, 51)
+    绿色 (Green): RGB(0, 255, 0)
+    蓝色 (Blue): RGB(0, 0, 255)
+    天蓝色 (SkyBlue): RGB(135, 206, 250)
+    黄色 (Yellow): RGB(255, 255, 0)
+    镀锌黄色 (ZincYellow): RGB(255, 227, 66)
+    深黄色 (DarkYellow): RGB(204, 204, 0)
+    紫色 (Purple): RGB(128, 0, 128)
+    绿松石色 (Turquoise): RGB(64, 224, 208)
+    橙色 (Orange): RGB(255, 165, 0)
+    靛蓝色 (Indigo): RGB(75, 0, 130)
+    白色 (White): RGB(255, 255, 255)
+    黑色 (Black): RGB(0, 0, 0)
+    平面黑色 (FlatBlack): RGB(5, 5, 5)
+    灰色 (Grey): RGB(128, 128, 128)
+    深灰色 (DarkGrey): RGB(64, 64, 64)
+
+ -->

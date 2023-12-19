@@ -188,7 +188,19 @@
         <material>Gazebo/Black</material>
     </gazebo>
 
+    <!-- lidar -->
+    <gazebo reference="lidarbase">
+        <material>Gazebo/Black</material>
+    </gazebo>
 
-
+    <gazebo reference="lidar">
+        <selfCollide>false</selfCollide>
+        <gravity>true</gravity>
+        <mu1>30</mu1>
+        <mu2>30</mu2>
+        <kp>1e60</kp>
+        <kd>1e50</kd>
+        <material>Gazebo/Purple</material>
+    </gazebo>
     
 </robot>

@@ -1,0 +1,59 @@
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:property name="lidar_radius" value="0.038" />
+    <xacro:property name="lidar_height" value="0.04" />
+
+    <xacro:property name="lidar_joint_x" value="${bot_length/2-0.055}" />
+    <xacro:property name="lidar_joint_y" value="0" />
+    <xacro:property name="lidar_joint_z" value="${bot_height/2+lidar_height/4}" />
+
+    <link name="lidarbase">
+        <visual>
+            <geometry>
+                <cylinder radius="${lidar_radius}" length="${lidar_height/2}"/>
+            </geometry>
+
+            <material name="black">
+                <color rgba="0.1 0.1 0.1 0.8"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="${lidar_radius}" length="${lidar_height/2}"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertial_matrix mass="0.3" radius="${lidar_radius}" length="${lidar_height/2}" />
+    </link>
+
+    <joint name="lidarbase2base_link_2" type="fixed">
+        <parent link="base_link_2"/>
+        <child link="lidarbase"/>
+        <origin xyz="${lidar_joint_x} ${lidar_joint_y} ${lidar_joint_z}"/>
+    </joint>
+
+    <link name="lidar">
+        <visual>
+            <geometry>
+                <cylinder radius="${lidar_radius}" length="${lidar_height/2}"/>
+            </geometry>
+            <material name="purple"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="${lidar_radius}" length="${lidar_height/2}"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertial_matrix mass="0.3" radius="${lidar_radius}" length="${lidar_height/2}" />
+    </link>
+    <joint name="lidar_joint" type="fixed">
+        <parent link="lidarbase"/>
+        <child link="lidar"/>
+        <origin xyz="0 0 ${lidar_height/2}"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+</robot>
+
+
+
+

@@ -27,9 +27,7 @@
             <geometry>
             <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
             </geometry>
-            <material name="white">
-                        <color rgba="1 1 0.9 1"/>
-            </material>
+            <material name="white"/>
         </visual>
         <collision>
             <geometry>
@@ -49,9 +47,7 @@
                     <geometry>
                     <cylinder radius="${roller_radius}" length="${roller_length}"/>
                     </geometry>
-                    <material name="black">
-                        <color rgba="0.1 0.1 0.1 1"/>
-                    </material>
+                    <material name="black"/>
                 </visual>
                 <collision>
                     <geometry>

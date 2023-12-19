@@ -6,93 +6,131 @@
 	<!-- gazebo_mecanum plugin -->
 	<gazebo>
 		<plugin name="bot_diff_drive" filename="libgazebo_mecanum_drive.so">
-		<commandTopic>cmd_vel</commandTopic>
-		<odometryTopic>odom</odometryTopic>
-		<odometryFrame>odom</odometryFrame>
-		<robotBaseFrame>base_link_1</robotBaseFrame>
-		<LeftRear>back_left_joint</LeftRear>
-		<LeftFront>front_left_joint</LeftFront>
-		<RightFront>front_right_joint</RightFront>
-		<RightRear>back_right_joint</RightRear>
-		<odometryRate>30</odometryRate>      
-		<publishWheelTF>false</publishWheelTF>
-		<publishOdomTF>false</publishOdomTF>
-		<WheelTorque>30</WheelTorque>
-		<WheelSeparationW>0.35</WheelSeparationW>
-		<WheelSeparationL>0.6</WheelSeparationL>
-		<wheelAccel>10</wheelAccel>
-		<wheelDiameter>0.13</wheelDiameter>
-		<publishOdom>true</publishOdom>
-		<isRollerModel>true</isRollerModel>
+			<commandTopic>cmd_vel</commandTopic>
+			<odometryTopic>odom</odometryTopic>
+			<odometryFrame>odom</odometryFrame>
+			<robotBaseFrame>base_link_1</robotBaseFrame>
+			<LeftRear>back_left_joint</LeftRear>
+			<LeftFront>front_left_joint</LeftFront>
+			<RightFront>front_right_joint</RightFront>
+			<RightRear>back_right_joint</RightRear>
+			<odometryRate>30</odometryRate>      
+			<publishWheelTF>false</publishWheelTF>
+			<publishOdomTF>false</publishOdomTF>
+			<WheelTorque>30</WheelTorque>
+			<WheelSeparationW>0.35</WheelSeparationW>
+			<WheelSeparationL>0.6</WheelSeparationL>
+			<wheelAccel>10</wheelAccel>
+			<wheelDiameter>0.13</wheelDiameter>
+			<publishOdom>true</publishOdom>
+			<isRollerModel>true</isRollerModel>
 		</plugin>
 	</gazebo>
 
 	<!-- gazebo joint_state_publisher -->
 	<gazebo>
 		<plugin name="bot_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
-		<ros>
-			<remapping>joint_states:=joint_states</remapping>
-		</ros>
-		<update_rate>30</update_rate>
-		<!-- wheel joint -->
-		<joint_name>back_left_joint</joint_name>
-		<joint_name>front_left_joint</joint_name>
-		<joint_name>front_right_joint</joint_name>
-		<joint_name>back_right_joint</joint_name>
-		<!-- roller front_left -->
-		<joint_name>front_left_roller_2_joint</joint_name>
-		<joint_name>front_left_roller_1_joint</joint_name>
-		<joint_name>front_left_roller_3_joint</joint_name>
-		<joint_name>front_left_roller_4_joint</joint_name>
-		<joint_name>front_left_roller_5_joint</joint_name>
-		<joint_name>front_left_roller_6_joint</joint_name>
-		<joint_name>front_left_roller_7_joint</joint_name>
-		<joint_name>front_left_roller_8_joint</joint_name>
-		<joint_name>front_left_roller_9_joint</joint_name>
-		<joint_name>front_left_roller_10_joint</joint_name>
-		<joint_name>front_left_roller_11_joint</joint_name>
-		<joint_name>front_left_roller_12_joint</joint_name>
-		<!-- roller back_left -->
-		<joint_name>back_left_roller_2_joint</joint_name>
-		<joint_name>back_left_roller_1_joint</joint_name>
-		<joint_name>back_left_roller_3_joint</joint_name>
-		<joint_name>back_left_roller_4_joint</joint_name>
-		<joint_name>back_left_roller_5_joint</joint_name>
-		<joint_name>back_left_roller_6_joint</joint_name>
-		<joint_name>back_left_roller_7_joint</joint_name>
-		<joint_name>back_left_roller_8_joint</joint_name>
-		<joint_name>back_left_roller_9_joint</joint_name>
-		<joint_name>back_left_roller_10_joint</joint_name>
-		<joint_name>back_left_roller_11_joint</joint_name>
-		<joint_name>back_left_roller_12_joint</joint_name>
-		<!-- roller back_right -->
-		<joint_name>back_right_roller_2_joint</joint_name>
-		<joint_name>back_right_roller_1_joint</joint_name>
-		<joint_name>back_right_roller_3_joint</joint_name>
-		<joint_name>back_right_roller_4_joint</joint_name>
-		<joint_name>back_right_roller_5_joint</joint_name>
-		<joint_name>back_right_roller_6_joint</joint_name>
-		<joint_name>back_right_roller_7_joint</joint_name>
-		<joint_name>back_right_roller_8_joint</joint_name>
-		<joint_name>back_right_roller_9_joint</joint_name>
-		<joint_name>back_right_roller_10_joint</joint_name>
-		<joint_name>back_right_roller_11_joint</joint_name>
-		<joint_name>back_right_roller_12_joint</joint_name>
-		<!-- roller front_right -->
-		<joint_name>front_right_roller_2_joint</joint_name>
-		<joint_name>front_right_roller_1_joint</joint_name>
-		<joint_name>front_right_roller_3_joint</joint_name>
-		<joint_name>front_right_roller_4_joint</joint_name>
-		<joint_name>front_right_roller_5_joint</joint_name>
-		<joint_name>front_right_roller_6_joint</joint_name>
-		<joint_name>front_right_roller_7_joint</joint_name>
-		<joint_name>front_right_roller_8_joint</joint_name>
-		<joint_name>front_right_roller_9_joint</joint_name>
-		<joint_name>front_right_roller_10_joint</joint_name>
-		<joint_name>front_right_roller_11_joint</joint_name>
-		<joint_name>front_right_roller_12_joint</joint_name>
+			<ros>
+				<remapping>joint_states:=joint_states</remapping>
+			</ros>
+			<update_rate>30</update_rate>
+			<!-- wheel joint -->
+			<joint_name>back_left_joint</joint_name>
+			<joint_name>front_left_joint</joint_name>
+			<joint_name>front_right_joint</joint_name>
+			<joint_name>back_right_joint</joint_name>
+			<!-- roller front_left -->
+			<joint_name>front_left_roller_2_joint</joint_name>
+			<joint_name>front_left_roller_1_joint</joint_name>
+			<joint_name>front_left_roller_3_joint</joint_name>
+			<joint_name>front_left_roller_4_joint</joint_name>
+			<joint_name>front_left_roller_5_joint</joint_name>
+			<joint_name>front_left_roller_6_joint</joint_name>
+			<joint_name>front_left_roller_7_joint</joint_name>
+			<joint_name>front_left_roller_8_joint</joint_name>
+			<joint_name>front_left_roller_9_joint</joint_name>
+			<joint_name>front_left_roller_10_joint</joint_name>
+			<joint_name>front_left_roller_11_joint</joint_name>
+			<joint_name>front_left_roller_12_joint</joint_name>
+			<!-- roller back_left -->
+			<joint_name>back_left_roller_2_joint</joint_name>
+			<joint_name>back_left_roller_1_joint</joint_name>
+			<joint_name>back_left_roller_3_joint</joint_name>
+			<joint_name>back_left_roller_4_joint</joint_name>
+			<joint_name>back_left_roller_5_joint</joint_name>
+			<joint_name>back_left_roller_6_joint</joint_name>
+			<joint_name>back_left_roller_7_joint</joint_name>
+			<joint_name>back_left_roller_8_joint</joint_name>
+			<joint_name>back_left_roller_9_joint</joint_name>
+			<joint_name>back_left_roller_10_joint</joint_name>
+			<joint_name>back_left_roller_11_joint</joint_name>
+			<joint_name>back_left_roller_12_joint</joint_name>
+			<!-- roller back_right -->
+			<joint_name>back_right_roller_2_joint</joint_name>
+			<joint_name>back_right_roller_1_joint</joint_name>
+			<joint_name>back_right_roller_3_joint</joint_name>
+			<joint_name>back_right_roller_4_joint</joint_name>
+			<joint_name>back_right_roller_5_joint</joint_name>
+			<joint_name>back_right_roller_6_joint</joint_name>
+			<joint_name>back_right_roller_7_joint</joint_name>
+			<joint_name>back_right_roller_8_joint</joint_name>
+			<joint_name>back_right_roller_9_joint</joint_name>
+			<joint_name>back_right_roller_10_joint</joint_name>
+			<joint_name>back_right_roller_11_joint</joint_name>
+			<joint_name>back_right_roller_12_joint</joint_name>
+			<!-- roller front_right -->
+			<joint_name>front_right_roller_2_joint</joint_name>
+			<joint_name>front_right_roller_1_joint</joint_name>
+			<joint_name>front_right_roller_3_joint</joint_name>
+			<joint_name>front_right_roller_4_joint</joint_name>
+			<joint_name>front_right_roller_5_joint</joint_name>
+			<joint_name>front_right_roller_6_joint</joint_name>
+			<joint_name>front_right_roller_7_joint</joint_name>
+			<joint_name>front_right_roller_8_joint</joint_name>
+			<joint_name>front_right_roller_9_joint</joint_name>
+			<joint_name>front_right_roller_10_joint</joint_name>
+			<joint_name>front_right_roller_11_joint</joint_name>
+			<joint_name>front_right_roller_12_joint</joint_name>
 		</plugin>
 	</gazebo> 
 
+
+	<!-- sick LiDAR 0 controller -->
+	<gazebo reference="lidar">
+		<sensor type="ray" name="sllidar_sensor">
+			<pose>0 0 0 0 0 0</pose>
+			<always_on>false</always_on>
+			<visualize>false</visualize>
+			<update_rate>40</update_rate>
+			<ray>
+				<scan>
+					<horizontal>
+						<samples>720</samples>
+						<resolution>1</resolution>
+						<min_angle>-2.35619445</min_angle>
+						<max_angle>2.35619445</max_angle>
+					</horizontal>
+				</scan>
+				<range>
+					<min>0.10</min>
+					<max>30.0</max>
+					<resolution>0.01</resolution>
+				</range>
+				<noise>
+					<type>gaussian</type>
+					<mean>0.0</mean>
+					<stddev>0.01</stddev>
+				</noise>
+			</ray>
+			<plugin name="bot_lidar_sensor" filename="libgazebo_ros_ray_sensor.so">
+				<ros>
+					<!-- <namespace>/tb3</namespace> -->
+					<remapping>~/out:=/scan</remapping>
+				</ros>
+				<output_type>sensor_msgs/LaserScan</output_type>
+				<frame_name>lidar</frame_name>
+			</plugin>
+		</sensor>
+	</gazebo>
 
 </robot>
