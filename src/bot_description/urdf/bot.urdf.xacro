@@ -1,9 +1,11 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="bot">
     <xacro:include filename="inertia.urdf.xacro"/>
-    <xacro:include filename="mecanum_wheel.xacro"/>
+    <xacro:include filename="bot_wheel.urdf.xacro"/>
     <xacro:include filename="bot_base.urdf.xacro"/>
-    <xacro:include filename="bot_gazebo.urdf.xacro"/>
 
-    <xacro:include filename="$(find bot_description)/ros2_control/bot_control.xacro"/>
-    <xacro:bot_ros2_control/>
+    <xacro:include filename="bot_gazebo.xacro"/>
+    <xacro:include filename="bot_gazebo_plugin.xacro"/>
+
+    <!-- <xacro:include filename="$(find bot_description)/ros2_control/bot_control.xacro"/>
+    <xacro:bot_ros2_control/> -->
 </robot>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="roller_transmission" params="link_name number">
+        <transmission name="${link_name}_roller_${number}">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${link_name}_roller_${number}_joint">
+                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            </joint>
+        </transmission>
+    </xacro:macro>
+</robot>

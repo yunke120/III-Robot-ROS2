@@ -1,0 +1,195 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find bot_description)/urdf/bot_wheel.gazebo.xacro"/>
+    <xacro:include filename="$(find bot_description)/urdf/bot_roller.gazebo.xacro"/>
+	<xacro:include filename="$(find bot_description)/urdf/bot_roller.transmission.xacro"/>
+
+
+	<!-- base_link_1 gazebo -->
+	<gazebo reference="base_link_1">
+		<selfCollide>false</selfCollide>
+		<gravity>true</gravity>
+		<mu1>10</mu1>
+		<mu2>10</mu2>
+		<kp>1e30</kp>
+		<kd>1e20</kd>
+		<material>Gazebo/Orange</material>
+	</gazebo>
+	<!-- base_link_2 gazebo -->
+	<gazebo reference="base_link_2">
+		<selfCollide>false</selfCollide>
+		<gravity>true</gravity>
+		<mu1>10</mu1>
+		<mu2>10</mu2>
+		<kp>1e30</kp>
+		<kd>1e20</kd>
+		<material>Gazebo/Orange</material>
+	</gazebo>
+	<!-- base_link_3 gazebo -->
+	<gazebo reference="base_link_3">
+		<selfCollide>false</selfCollide>
+		<gravity>true</gravity>
+		<mu1>10</mu1>
+		<mu2>10</mu2>
+		<kp>1e30</kp>
+		<kd>1e20</kd>
+		<material>Gazebo/Orange</material>
+	</gazebo>
+
+    <!-- wheel gazebo -->
+	<xacro:wheel_gazebo link_name="front_left"/>
+	<xacro:wheel_gazebo link_name="front_right"/>
+	<xacro:wheel_gazebo link_name="back_left"/>
+	<xacro:wheel_gazebo link_name="back_right"/>
+
+	<!-- roller gazebo -->
+	<xacro:roller_gazebo link_name="front_left"   number="1"/>
+	<xacro:roller_gazebo link_name="front_left"   number="2"/>
+	<xacro:roller_gazebo link_name="front_left"   number="3"/>
+	<xacro:roller_gazebo link_name="front_left"   number="4"/>
+	<xacro:roller_gazebo link_name="front_left"   number="5"/>
+	<xacro:roller_gazebo link_name="front_left"   number="6"/>
+	<xacro:roller_gazebo link_name="front_left"   number="7"/>
+	<xacro:roller_gazebo link_name="front_left"   number="8"/>
+	<xacro:roller_gazebo link_name="front_left"   number="9"/>
+	<xacro:roller_gazebo link_name="front_left"   number="10"/>
+	<xacro:roller_gazebo link_name="front_left"   number="11"/>
+	<xacro:roller_gazebo link_name="front_left"   number="12"/>
+
+    <xacro:roller_gazebo link_name="front_right"  number="1"/>
+    <xacro:roller_gazebo link_name="front_right"  number="2"/>
+    <xacro:roller_gazebo link_name="front_right"  number="3"/>
+    <xacro:roller_gazebo link_name="front_right"  number="4"/>
+    <xacro:roller_gazebo link_name="front_right"  number="5"/>
+    <xacro:roller_gazebo link_name="front_right"  number="6"/>
+    <xacro:roller_gazebo link_name="front_right"  number="7"/>
+    <xacro:roller_gazebo link_name="front_right"  number="8"/>
+    <xacro:roller_gazebo link_name="front_right"  number="9"/>
+    <xacro:roller_gazebo link_name="front_right"  number="10"/>
+    <xacro:roller_gazebo link_name="front_right"  number="11"/>
+    <xacro:roller_gazebo link_name="front_right"  number="12"/>
+
+    <xacro:roller_gazebo link_name="back_left"    number="1"/>
+    <xacro:roller_gazebo link_name="back_left"    number="2"/>
+    <xacro:roller_gazebo link_name="back_left"    number="3"/>
+    <xacro:roller_gazebo link_name="back_left"    number="4"/>
+    <xacro:roller_gazebo link_name="back_left"    number="5"/>
+    <xacro:roller_gazebo link_name="back_left"    number="6"/>
+    <xacro:roller_gazebo link_name="back_left"    number="7"/>
+    <xacro:roller_gazebo link_name="back_left"    number="8"/>
+    <xacro:roller_gazebo link_name="back_left"    number="9"/>
+    <xacro:roller_gazebo link_name="back_left"    number="10"/>
+    <xacro:roller_gazebo link_name="back_left"    number="11"/>
+    <xacro:roller_gazebo link_name="back_left"    number="12"/>
+
+    <xacro:roller_gazebo link_name="back_right"   number="1"/>
+    <xacro:roller_gazebo link_name="back_right"   number="2"/>
+    <xacro:roller_gazebo link_name="back_right"   number="3"/>
+    <xacro:roller_gazebo link_name="back_right"   number="4"/>
+    <xacro:roller_gazebo link_name="back_right"   number="5"/>
+    <xacro:roller_gazebo link_name="back_right"   number="6"/>
+    <xacro:roller_gazebo link_name="back_right"   number="7"/>
+    <xacro:roller_gazebo link_name="back_right"   number="8"/>
+    <xacro:roller_gazebo link_name="back_right"   number="9"/>
+    <xacro:roller_gazebo link_name="back_right"   number="10"/>
+    <xacro:roller_gazebo link_name="back_right"   number="11"/>
+    <xacro:roller_gazebo link_name="back_right"   number="12"/>
+
+	<!-- roller transmisson -->
+	<xacro:roller_transmission link_name="front_left"   number="1"/>
+	<xacro:roller_transmission link_name="front_left"   number="2"/>
+	<xacro:roller_transmission link_name="front_left"   number="3"/>
+	<xacro:roller_transmission link_name="front_left"   number="4"/>
+	<xacro:roller_transmission link_name="front_left"   number="5"/>
+	<xacro:roller_transmission link_name="front_left"   number="6"/>
+	<xacro:roller_transmission link_name="front_left"   number="7"/>
+	<xacro:roller_transmission link_name="front_left"   number="8"/>
+	<xacro:roller_transmission link_name="front_left"   number="9"/>
+	<xacro:roller_transmission link_name="front_left"   number="10"/>
+	<xacro:roller_transmission link_name="front_left"   number="11"/>
+	<xacro:roller_transmission link_name="front_left"   number="12"/>
+
+    <xacro:roller_transmission link_name="front_right"  number="1"/>
+    <xacro:roller_transmission link_name="front_right"  number="2"/>
+    <xacro:roller_transmission link_name="front_right"  number="3"/>
+    <xacro:roller_transmission link_name="front_right"  number="4"/>
+    <xacro:roller_transmission link_name="front_right"  number="5"/>
+    <xacro:roller_transmission link_name="front_right"  number="6"/>
+    <xacro:roller_transmission link_name="front_right"  number="7"/>
+    <xacro:roller_transmission link_name="front_right"  number="8"/>
+    <xacro:roller_transmission link_name="front_right"  number="9"/>
+    <xacro:roller_transmission link_name="front_right"  number="10"/>
+    <xacro:roller_transmission link_name="front_right"  number="11"/>
+    <xacro:roller_transmission link_name="front_right"  number="12"/>
+
+    <xacro:roller_transmission link_name="back_left"    number="1"/>
+    <xacro:roller_transmission link_name="back_left"    number="2"/>
+    <xacro:roller_transmission link_name="back_left"    number="3"/>
+    <xacro:roller_transmission link_name="back_left"    number="4"/>
+    <xacro:roller_transmission link_name="back_left"    number="5"/>
+    <xacro:roller_transmission link_name="back_left"    number="6"/>
+    <xacro:roller_transmission link_name="back_left"    number="7"/>
+    <xacro:roller_transmission link_name="back_left"    number="8"/>
+    <xacro:roller_transmission link_name="back_left"    number="9"/>
+    <xacro:roller_transmission link_name="back_left"    number="10"/>
+    <xacro:roller_transmission link_name="back_left"    number="11"/>
+    <xacro:roller_transmission link_name="back_left"    number="12"/>
+
+    <xacro:roller_transmission link_name="back_right"   number="1"/>
+    <xacro:roller_transmission link_name="back_right"   number="2"/>
+    <xacro:roller_transmission link_name="back_right"   number="3"/>
+    <xacro:roller_transmission link_name="back_right"   number="4"/>
+    <xacro:roller_transmission link_name="back_right"   number="5"/>
+    <xacro:roller_transmission link_name="back_right"   number="6"/>
+    <xacro:roller_transmission link_name="back_right"   number="7"/>
+    <xacro:roller_transmission link_name="back_right"   number="8"/>
+    <xacro:roller_transmission link_name="back_right"   number="9"/>
+    <xacro:roller_transmission link_name="back_right"   number="10"/>
+    <xacro:roller_transmission link_name="back_right"   number="11"/>
+    <xacro:roller_transmission link_name="back_right"   number="12"/>
+
+
+    <!-- pillar -->
+    <gazebo reference="front_left_p1">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="front_right_p1">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="back_left_p1">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="back_right_p1">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="front_left_p2">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="front_right_p2">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="back_left_p2">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="back_right_p2">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <!-- motor -->
+    <gazebo reference="front_left_motor">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+    <gazebo reference="front_right_motor">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+    <gazebo reference="back_left_motor">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+    <gazebo reference="back_right_motor">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+    <!-- roller -->
+
+
+
+    
+</robot>
