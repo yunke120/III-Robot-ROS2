@@ -176,18 +176,17 @@
     </gazebo>
     <!-- motor -->
     <gazebo reference="front_left_motor">
-        <material>Gazebo/FlatBlack</material>
+        <material>Gazebo/Black</material>
     </gazebo>
     <gazebo reference="front_right_motor">
-        <material>Gazebo/FlatBlack</material>
+        <material>Gazebo/Black</material>
     </gazebo>
     <gazebo reference="back_left_motor">
-        <material>Gazebo/FlatBlack</material>
+        <material>Gazebo/Black</material>
     </gazebo>
     <gazebo reference="back_right_motor">
-        <material>Gazebo/FlatBlack</material>
+        <material>Gazebo/Black</material>
     </gazebo>
-    <!-- roller -->
 
 
 

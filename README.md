@@ -22,9 +22,9 @@ $ ros2 launch bot_bringup gazebo_control.launch.py
 ```
 shell 2
 ```shell
-$ ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diffbot_base_controller/cmd_vel_unstamped
+$ ros2 run bot_teleop bot_teleop
 ```
-![gazebo_empty_world](./asserts/gazebo_empty_world.png)
+![gazebo_2](./asserts/gazabo_2.gif)
 
 ## bridge
 
