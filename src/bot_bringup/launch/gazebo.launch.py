@@ -11,10 +11,12 @@ from launch.substitutions import LaunchConfiguration
 def generate_launch_description():
     model = DeclareLaunchArgument(name="model", default_value=get_package_share_directory("bot_description") + "/urdf/bot.urdf.xacro")
     p_value = ParameterValue(Command(["xacro ", LaunchConfiguration("model")]))
-
+    world_file = os.path.join(
+        get_package_share_directory('bot_description'), 'world', 'bot.world'
+    )
     gazebo = ExecuteProcess(
         cmd=[
-            'gazebo', '--verbose', '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so'
+            'gazebo', '--verbose', '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so',world_file
         ],
         output='screen'
     )
