@@ -3,7 +3,7 @@
 
 
 
-	<!-- gazebo_mecanum plugin -->
+	<!-- import gazebo_mecanum_drive plugin -->
 	<gazebo>
 		<plugin name="bot_diff_drive" filename="libgazebo_mecanum_drive.so">
 			<commandTopic>cmd_vel</commandTopic>
@@ -27,7 +27,7 @@
 		</plugin>
 	</gazebo>
 
-	<!-- gazebo joint_state_publisher -->
+	<!-- import joint_state_publisher plugin -->
 	<gazebo>
 		<plugin name="bot_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
 			<ros>
@@ -95,7 +95,7 @@
 	</gazebo> 
 
 
-	<!-- sick LiDAR 0 controller -->
+	<!-- import lidar controller plugin -->
 	<gazebo reference="lidar">
 		<sensor type="ray" name="sllidar_sensor">
 			<pose>0 0 0 0 0 0</pose>
@@ -130,6 +130,33 @@
 				<output_type>sensor_msgs/LaserScan</output_type>
 				<frame_name>lidar</frame_name>
 			</plugin>
+		</sensor>
+	</gazebo>
+
+	<!-- import camera controller plugin -->
+	<gazebo reference="camera">
+		<sensor name="camera" type="camera">
+		<always_on>true</always_on>
+		<visualize>true</visualize>
+		<update_rate>30</update_rate>
+		<camera name="camera">
+			<horizontal_fov>1.047198</horizontal_fov>
+			<image>
+			<width>960</width>
+			<height>540</height>
+			<format>R8G8B8</format>
+			</image>
+			<clip>
+			<near>0.1</near>
+			<far>10</far>
+			</clip>
+		</camera>
+		<plugin name="camera_driver" filename="libgazebo_ros_camera.so">
+			<camera_name>camera</camera_name>
+			<frame_name>camera</frame_name>
+			<triggered>false</triggered>											
+			<hack_baseline>0.07</hack_baseline>
+		</plugin>
 		</sensor>
 	</gazebo>
 

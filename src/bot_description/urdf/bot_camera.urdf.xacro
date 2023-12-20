@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="camera_radius" value="0.07" />
+    <xacro:property name="foothold_radius" value="0.111" />
+    <xacro:property name="foothold_height" value="0.01" />
+
+    <link name="foothold_base_1">
+        <visual>
+            <geometry>
+                <cylinder radius="${foothold_radius}" length="${foothold_height}"/>
+            </geometry>
+            <material name="black" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="${foothold_radius}" length="${foothold_height}"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertial_matrix mass="0.5" radius="${foothold_radius}" length="${foothold_height}"/>
+    </link>
+
+    <joint name="fb1_2base_link3" type="fixed">
+        <parent link="base_link_3"/>
+        <child link="foothold_base_1"/>
+        <origin xyz="0.0 0.0 0.0"/>
+    </joint>
+
+
+    <link name="foothold_base_2">
+        <visual>
+            <geometry>
+                <box size="${foothold_height} 0.05 0.23"/>
+            </geometry>
+            <material name="black" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${foothold_height} 0.05 0.23"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertial_matrix mass="0.1" length="${foothold_height}" width="0.05" height="0.23"/>
+    </link>
+    <joint name="foothold_base12_joint" type="fixed">
+        <parent link="foothold_base_1"/>
+        <child link="foothold_base_2"/>
+        <origin xyz="${-foothold_radius+0.001} 0.0 0.115"/>
+    </joint>
+
+
+    <link name="foothold_base_3">
+        <visual>
+            <geometry>
+                <box size="0.06 0.05 ${foothold_height}"/>
+            </geometry>
+            <material name="black" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.06 0.05 ${foothold_height}"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertial_matrix mass="0.1" length="0.06" width="0.05" height="${foothold_height}"/>
+    </link>
+    <joint name="foothold_base23_joint" type="fixed">
+        <parent link="foothold_base_2"/>
+        <child link="foothold_base_3"/>
+        <origin xyz="0.03 0.0 0.115"/>
+    </joint>
+
+    <link name="foothold_base_4">
+        <visual>
+            <geometry>
+                <cylinder radius="0.07" length="${foothold_height}"/>
+            </geometry>
+            <material name="black" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.07" length="${foothold_height}"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertial_matrix mass="0.1" radius="0.07" length="${foothold_height}"/>
+    </link>
+    <joint name="foothold_base34_joint" type="fixed">
+        <parent link="foothold_base_3"/>
+        <child link="foothold_base_4"/>
+        <origin xyz="0.1 0.0 0.0"/>
+    </joint>
+
+    
+    <link name="camera_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.02" length="0.07"/>
+            </geometry>
+            <material name="black" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.02" length="0.07"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertial_matrix mass="0.2" radius="0.02" length="0.007"/>
+    </link>
+    <joint name="camera_link2foothold4" type="fixed">
+        <parent link="foothold_base_4"/>
+        <child link="camera_link"/>
+        <origin xyz="0.0 0.0 -0.035"/>
+        <axis xyz="0.0 0.0 1"/>
+    </joint>
+
+
+    <link name="camera">
+        <visual>
+            <geometry>
+                <sphere radius="${camera_radius}"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius="${camera_radius}"/>
+            </geometry>
+        </collision>
+        <xacro:sphere_inertial_matrix mass="0.2" radius="${camera_radius}" />
+    </link>
+    <joint name="camera_link2camera" type="fixed">
+        <parent link="camera_link"/>
+        <child link="camera"/>
+        <origin xyz="0.0 0.0 ${-(camera_radius+0.035)}"/>
+    </joint>
+</robot>

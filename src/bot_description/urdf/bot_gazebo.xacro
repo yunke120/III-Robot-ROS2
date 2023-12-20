@@ -202,5 +202,31 @@
         <kd>1e50</kd>
         <material>Gazebo/Purple</material>
     </gazebo>
+
+    <!-- camera -->
+    <gazebo reference="foothold_base_1">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="foothold_base_2">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="foothold_base_3">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="foothold_base_4">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="camera_link">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="camera">
+        <selfCollide>false</selfCollide>
+        <gravity>true</gravity>
+        <mu1>30</mu1>
+        <mu2>30</mu2>
+        <kp>1e60</kp>
+        <kd>1e50</kd>
+        <material>Gazebo/White</material>
+    </gazebo>
     
 </robot>

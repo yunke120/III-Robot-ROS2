@@ -5,6 +5,7 @@
     <xacro:include filename="bot_wheel.urdf.xacro"/>
     <xacro:include filename="bot_base.urdf.xacro"/>
     <xacro:include filename="bot_lidar.urdf.xacro"/>
+    <xacro:include filename="bot_camera.urdf.xacro"/>
 
     <xacro:include filename="bot_gazebo.xacro"/>
     <xacro:include filename="bot_gazebo_plugin.xacro"/>
