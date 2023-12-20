@@ -26,30 +26,35 @@
     <xacro:property name="wheel_base_dis" value="0.03" />
     <xacro:property name="wheel_joint_x" value="${bot_length/2 - 0.045}" />
     <xacro:property name="wheel_joint_y" value="${bot_width/2 + wheel_base_dis + wheel_length/2}" />
-    <xacro:property name="wheel_joint_z" value="${wheel_radius}" />
+    <xacro:property name="wheel_joint_z" value="${wheel_radius-z_offset}" />
 
     <!-- motor parameters -->
-    <xacro:property name="motor_radius" value="${wheel_radius-z_offset-bot_height}" />
+    <xacro:property name="motor_radius" value="${wheel_radius-z_offset}" />
     <xacro:property name="motor_length" value="0.12" />
     <xacro:property name="motor_mass" value="0.3" />
 
+    <link name="base_footprint"/>
     <!--   Define three chassis base_link_1 base_link_2 base_link_3-->
     <link name="base_link_1">
         <visual>
             <geometry>
                 <box size="${bot_length} ${bot_width} ${bot_height}"/>
             </geometry>
-            <origin xyz="0.0 0.0 ${z_offset+bot_height/2}"/>
             <material name="orange"/>
         </visual>
         <collision>
             <geometry>
                 <box size="${bot_length} ${bot_width} ${bot_height}"/>
             </geometry>
-            <origin xyz="0.0 0.0 ${z_offset}"/>
         </collision>
         <xacro:box_inertial_matrix mass="${bot_mass}" length="${bot_length}" width="${bot_width}" height="${bot_height}" />
     </link>
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link_1"/>
+        <origin xyz="0.0 0.0 ${z_offset+bot_height/2}"/>
+    </joint>
+
 
     <link name="base_link_2">
         <visual>
@@ -84,7 +89,7 @@
     <joint name="base12_joint" type="fixed">
         <parent link="base_link_1"/>
         <child link="base_link_2"/>
-        <origin xyz="0.0 0.0 ${pillar_height_1+z_offset+bot_height/2*3}"/>
+        <origin xyz="0.0 0.0 ${pillar_height_1+bot_height}"/>
     </joint>
 
     <joint name="base23_joint" type="fixed">
@@ -164,7 +169,7 @@
         <joint name="${link_name}_p1base_joint" type="fixed">
             <parent link="base_link_1"/>
             <child link="${link_name}_p1"/>
-            <origin xyz="${(bot_length/2-pillar_length/2) * front_flag} ${(bot_width/3) * left_flag} ${z_offset+bot_height+pillar_height_1/2}"/>
+            <origin xyz="${(bot_length/2-pillar_length/2) * front_flag} ${(bot_width/3) * left_flag} ${bot_height/2+pillar_height_1/2}"/>
         </joint>
 
         <joint name="${link_name}_p2base_joint" type="fixed">

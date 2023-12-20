@@ -6,8 +6,10 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Grid1
         - /RobotModel1/Description Topic1
         - /TF1/Frames1
+        - /TF1/Tree1
       Splitter Ratio: 0.5
     Tree Height: 719
   - Class: rviz_common/Selection
@@ -27,14 +29,14 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: LaserScan
+    SyncSource: ""
 Visualization Manager:
   Class: ""
   Displays:
-    - Alpha: 0.5
+    - Alpha: 1
       Cell Size: 1
       Class: rviz_default_plugins/Grid
-      Color: 160; 160; 164
+      Color: 246; 245; 244
       Enabled: true
       Line Style:
         Line Width: 0.029999999329447746
@@ -227,6 +229,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_link_1:
           Alpha: 1
           Show Axes: false
@@ -424,154 +430,154 @@ Visualization Manager:
       Enabled: true
       Frame Timeout: 15
       Frames:
-        All Enabled: true
+        All Enabled: false
         back_left:
-          Value: true
+          Value: false
         back_left_motor:
-          Value: true
+          Value: false
         back_left_p1:
-          Value: true
+          Value: false
         back_left_p2:
-          Value: true
+          Value: false
         back_left_roller_1:
-          Value: true
+          Value: false
         back_left_roller_10:
-          Value: true
+          Value: false
         back_left_roller_11:
-          Value: true
+          Value: false
         back_left_roller_12:
-          Value: true
+          Value: false
         back_left_roller_2:
-          Value: true
+          Value: false
         back_left_roller_3:
-          Value: true
+          Value: false
         back_left_roller_4:
-          Value: true
+          Value: false
         back_left_roller_5:
-          Value: true
+          Value: false
         back_left_roller_6:
-          Value: true
+          Value: false
         back_left_roller_7:
-          Value: true
+          Value: false
         back_left_roller_8:
-          Value: true
+          Value: false
         back_left_roller_9:
-          Value: true
+          Value: false
         back_right:
-          Value: true
+          Value: false
         back_right_motor:
-          Value: true
+          Value: false
         back_right_p1:
-          Value: true
+          Value: false
         back_right_p2:
-          Value: true
+          Value: false
         back_right_roller_1:
-          Value: true
+          Value: false
         back_right_roller_10:
-          Value: true
+          Value: false
         back_right_roller_11:
-          Value: true
+          Value: false
         back_right_roller_12:
-          Value: true
+          Value: false
         back_right_roller_2:
-          Value: true
+          Value: false
         back_right_roller_3:
-          Value: true
+          Value: false
         back_right_roller_4:
-          Value: true
+          Value: false
         back_right_roller_5:
-          Value: true
+          Value: false
         back_right_roller_6:
-          Value: true
+          Value: false
         back_right_roller_7:
-          Value: true
+          Value: false
         back_right_roller_8:
-          Value: true
+          Value: false
         back_right_roller_9:
+          Value: false
+        base_footprint:
           Value: true
         base_link_1:
-          Value: true
+          Value: false
         base_link_2:
-          Value: true
+          Value: false
         base_link_3:
-          Value: true
+          Value: false
         front_left:
-          Value: true
+          Value: false
         front_left_motor:
-          Value: true
+          Value: false
         front_left_p1:
-          Value: true
+          Value: false
         front_left_p2:
-          Value: true
+          Value: false
         front_left_roller_1:
-          Value: true
+          Value: false
         front_left_roller_10:
-          Value: true
+          Value: false
         front_left_roller_11:
-          Value: true
+          Value: false
         front_left_roller_12:
-          Value: true
+          Value: false
         front_left_roller_2:
-          Value: true
+          Value: false
         front_left_roller_3:
-          Value: true
+          Value: false
         front_left_roller_4:
-          Value: true
+          Value: false
         front_left_roller_5:
-          Value: true
+          Value: false
         front_left_roller_6:
-          Value: true
+          Value: false
         front_left_roller_7:
-          Value: true
+          Value: false
         front_left_roller_8:
-          Value: true
+          Value: false
         front_left_roller_9:
-          Value: true
+          Value: false
         front_right:
-          Value: true
+          Value: false
         front_right_motor:
-          Value: true
+          Value: false
         front_right_p1:
-          Value: true
+          Value: false
         front_right_p2:
-          Value: true
+          Value: false
         front_right_roller_1:
-          Value: true
+          Value: false
         front_right_roller_10:
-          Value: true
+          Value: false
         front_right_roller_11:
-          Value: true
+          Value: false
         front_right_roller_12:
-          Value: true
+          Value: false
         front_right_roller_2:
-          Value: true
+          Value: false
         front_right_roller_3:
-          Value: true
+          Value: false
         front_right_roller_4:
-          Value: true
+          Value: false
         front_right_roller_5:
-          Value: true
+          Value: false
         front_right_roller_6:
-          Value: true
+          Value: false
         front_right_roller_7:
-          Value: true
+          Value: false
         front_right_roller_8:
-          Value: true
+          Value: false
         front_right_roller_9:
-          Value: true
+          Value: false
         lidar:
-          Value: true
+          Value: false
         lidarbase:
-          Value: true
-        odom:
-          Value: true
+          Value: false
       Marker Scale: 0.30000001192092896
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: false
       Tree:
-        odom:
+        base_footprint:
           base_link_1:
             back_left:
               back_left_roller_1:
@@ -824,25 +830,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 4.2371039390563965
+      Distance: 1.8318328857421875
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.6286766529083252
-        Y: 0.038469329476356506
-        Z: 0.23667417466640472
+        X: -0.002229816047474742
+        Y: -0.002770470455288887
+        Z: 0.044332027435302734
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.825397789478302
+      Pitch: 0.5102025270462036
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.776682376861572
+      Yaw: 2.559866428375244
     Saved: ~
 Window Geometry:
   Displays:

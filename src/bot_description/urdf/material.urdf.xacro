@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:property name="alpha" value="0.8" />
+    <xacro:property name="alpha" value="1.0" />
 
     <material name="red">           <color rgba="${255/255}  ${0/255  } ${0/255  }  ${alpha}"/>    </material>
     <material name="redbright">     <color rgba="${255/255}  ${51/255 } ${51/255 }  ${alpha}"/>    </material>

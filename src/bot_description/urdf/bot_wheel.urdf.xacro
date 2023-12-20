@@ -2,14 +2,16 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
     <!-- Properties -->
-    <xacro:property name="wheel_radius" value="0.0635" />
-    <xacro:property name="wheel_width" value="0.05" />
-    <xacro:property name="wheel_mass" value="0.5" />
-
     <xacro:property name="roller_mass" value="0.02"/> 
     <xacro:property name="roller_radius" value="0.008"/>
     <xacro:property name="roller_length" value="0.046"/>
     <xacro:property name="roller_number" value="12"/>
+
+    <xacro:property name="wheel_radius" value="0.0635" />
+
+    <xacro:property name="wheel_internal_radius" value="${wheel_radius-roller_radius/2}" />
+    <xacro:property name="wheel_width" value="0.05" />
+    <xacro:property name="wheel_mass" value="0.5" />
 
 
     <!-- Mecanum Wheel Macro -->
@@ -25,13 +27,13 @@
         <link name="${name}">
         <visual>
             <geometry>
-            <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+            <cylinder radius="${wheel_internal_radius}" length="${wheel_width}"/>
             </geometry>
             <material name="white"/>
         </visual>
         <collision>
             <geometry>
-            <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+            <cylinder radius="${wheel_internal_radius}" length="${wheel_width}"/>
             </geometry>
         </collision>
         <inertial>
@@ -64,7 +66,7 @@
                 <parent link="${parent}"/> 
                 <child link="${name}"/>  
                 <origin 
-                    xyz="${wheel_radius*cos(angle)} ${wheel_radius*sin(angle)} 0"
+                    xyz="${wheel_internal_radius*cos(angle)} ${wheel_internal_radius*sin(angle)} 0"
                     rpy="${roller_angle} 0 ${angle}"/>
                 <axis xyz="0 0 1"/>
             </joint>
