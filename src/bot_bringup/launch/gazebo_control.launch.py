@@ -55,4 +55,9 @@ def generate_launch_description():
         )
     )
 
-    return LaunchDescription([model, joint_state_pub, robot_state_pub, gazebo, spawn_entity, delay_rviz2_after_gazebo])
+    return LaunchDescription([model, 
+                            #   joint_state_pub, # 如果publishWheelTF为true，需关闭joint_state_pub，防止重复发布
+                              robot_state_pub, 
+                              gazebo, 
+                              spawn_entity, 
+                              delay_rviz2_after_gazebo])
