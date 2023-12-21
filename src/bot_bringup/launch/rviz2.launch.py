@@ -29,7 +29,7 @@ def generate_launch_description():
             executable='rviz2',
             name='rviz2',
             output='screen',
-            arguments=['-d', get_package_share_directory("bot_description") + "/rviz/bot.rviz"])
+            arguments=['-d', get_package_share_directory("bot_description") + "/rviz/bot_display.rviz"])
 
 
     return LaunchDescription([model, rviz2, robot_state_pub, joint_state_pub])

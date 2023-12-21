@@ -7,24 +7,22 @@
 ```shell
 $ ros2 launch bot_bringup rviz2.launch.py
 ```
-![robot_model](./asserts/rviz2.png)
 
 In gazebo
 ```shell
-$ ros2 launch bot_bringup gazebo.launch.py
+$ ros2 launch bot_bringup gazebo_empty_world.launch.py
 ```
-![robot_model](./asserts/gazebo_1.jpg)
 
-### Control the robot
+In substation
+
 shell 1
 ```shell
-$ ros2 launch bot_bringup gazebo_control.launch.py
+$ ros2 launch bot_bringup gazebo_substation.launch.py
 ```
 shell 2
 ```shell
 $ ros2 run bot_teleop bot_teleop
 ```
-![gazebo_2](./asserts/gazabo_2.gif)
 
 ## bridge
 

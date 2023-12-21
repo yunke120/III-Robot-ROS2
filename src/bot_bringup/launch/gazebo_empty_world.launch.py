@@ -27,13 +27,6 @@ def generate_launch_description():
         package="joint_state_publisher",
         executable="joint_state_publisher",
     )
-
-    rviz2 = Node(
-            package='rviz2',
-            executable='rviz2',
-            name='rviz2',
-            output='screen',
-            arguments=['-d', get_package_share_directory("bot_description") + "/rviz/bot.rviz"])
     
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
@@ -48,16 +41,9 @@ def generate_launch_description():
         output='screen'
     )
 
-    delay_rviz2_after_gazebo = RegisterEventHandler(
-        event_handler=OnProcessExit(
-            target_action=spawn_entity,
-            on_exit=[rviz2],
-        )
-    )
-
     return LaunchDescription([model, 
                             #   joint_state_pub, # 如果publishWheelTF为true，需关闭joint_state_pub，防止重复发布
                               robot_state_pub, 
                               gazebo, 
                               spawn_entity, 
-                              delay_rviz2_after_gazebo])
+                              ])
