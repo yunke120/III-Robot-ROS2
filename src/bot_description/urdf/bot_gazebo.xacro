@@ -228,5 +228,16 @@
         <kd>1e50</kd>
         <material>Gazebo/White</material>
     </gazebo>
+
+    <!-- depth camera -->
+    <gazebo reference="depth_link">
+        <selfCollide>false</selfCollide>
+        <gravity>true</gravity>
+        <mu1>30</mu1>
+        <mu2>30</mu2>
+        <kp>1e60</kp>
+        <kd>1e50</kd>
+        <material>Gazebo/Grey</material>
+    </gazebo>
     
 </robot>

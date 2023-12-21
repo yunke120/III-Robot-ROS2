@@ -20,7 +20,7 @@
     <material name="flatblack">     <color rgba="${5/255  }  ${5/255  } ${5/255  }  ${alpha}"/>    </material>
     <material name="grey">          <color rgba="${128/255}  ${128/255} ${128/255}  ${alpha}"/>    </material>
     <material name="darkgrey">      <color rgba="${64/255 }  ${64/255 } ${64/255 }  ${alpha}"/>    </material>
-
+    <material name="plastic">       <color rgba="0.1 0.1 0.1 1"/>                                  </material>
 </robot>
 
 <!-- 
@@ -43,5 +43,5 @@
     平面黑色 (FlatBlack): RGB(5, 5, 5)
     灰色 (Grey): RGB(128, 128, 128)
     深灰色 (DarkGrey): RGB(64, 64, 64)
-
+    塑料(plastic)
  -->
