@@ -239,5 +239,12 @@
         <kd>1e50</kd>
         <material>Gazebo/Grey</material>
     </gazebo>
+
+    <gazebo reference="n100_base_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="imu_n100">
+        <material>Gazebo/Grey</material>
+    </gazebo>
     
 </robot>

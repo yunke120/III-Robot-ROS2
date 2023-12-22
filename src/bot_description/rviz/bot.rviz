@@ -445,12 +445,26 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        imu_n100:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         lidar:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
         lidarbase:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        n100_base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        n100_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -620,9 +634,15 @@ Visualization Manager:
           Value: false
         front_right_roller_9:
           Value: false
+        imu_n100:
+          Value: true
         lidar:
           Value: true
         lidarbase:
+          Value: false
+        n100_base_footprint:
+          Value: false
+        n100_base_link:
           Value: false
         odom:
           Value: true
@@ -716,6 +736,10 @@ Visualization Manager:
                 lidarbase:
                   lidar:
                     {}
+                n100_base_footprint:
+                  n100_base_link:
+                    imu_n100:
+                      {}
               front_left:
                 front_left_roller_1:
                   {}
@@ -943,25 +967,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 6.5535783767700195
+      Distance: 1.81514310836792
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.6978424787521362
-        Y: -0.051892876625061035
-        Z: 1.0343714952468872
+        X: 0.25582370162010193
+        Y: -0.34235018491744995
+        Z: 0.2802470922470093
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.2302025705575943
+      Pitch: 0.31020259857177734
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.9530487060546875
+      Yaw: 5.628048896789551
     Saved: ~
 Window Geometry:
   Displays:

@@ -11,6 +11,11 @@
         <origin xyz="${bot_length/2-0.026/2} 0 ${bot_height/2}" rpy="0 0 0"/>
     </xacro:sensor_d455>
 
+    <xacro:include filename="bot_imu.urdf.xacro"/>
+    <xacro:imu_n100 parent="base_link_2">
+        <origin xyz="0 0 ${bot_height/2}" rpy="0 0 0"/>
+    </xacro:imu_n100>
+
     <xacro:include filename="bot_gazebo.xacro"/>
     <xacro:include filename="bot_gazebo_plugin.xacro"/>
 
