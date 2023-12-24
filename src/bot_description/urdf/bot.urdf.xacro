@@ -4,18 +4,29 @@
 
     <xacro:include filename="bot_wheel.urdf.xacro"/>
     <xacro:include filename="bot_base.urdf.xacro"/>
-    <xacro:include filename="bot_lidar.urdf.xacro"/>
+    
+    <!-- add camera -->
     <xacro:include filename="bot_camera.urdf.xacro"/>
+
+    <!-- add lidar -->
+    <xacro:include filename="bot_lidar.urdf.xacro"/>
+    <xacro:lidar_func parent="base_link_3">
+        <origin xyz="${bot_length/2-lidar_radius} 0 ${bot_height/2+lidar_height/4}" rpy="0 0 0"/>
+    </xacro:lidar_func>
+
+    <!-- add depth camera -->
     <xacro:include filename="bot_depth.urdf.xacro"/>
-    <xacro:sensor_d455 parent="base_link_3" use_nominal_extrinsics="false">
-        <origin xyz="${bot_length/2-0.026/2} 0 ${bot_height/2}" rpy="0 0 0"/>
+    <xacro:sensor_d455 parent="base_link_2" use_nominal_extrinsics="false">
+        <origin xyz="${bot_length/2-d455_cam_depth/2} 0 ${bot_height/2}" rpy="0 0 0"/>
     </xacro:sensor_d455>
 
+    <!-- add imu -->
     <xacro:include filename="bot_imu.urdf.xacro"/>
     <xacro:imu_n100 parent="base_link_2">
         <origin xyz="0 0 ${bot_height/2}" rpy="0 0 0"/>
     </xacro:imu_n100>
 
+    <!-- load gazebo plugins -->
     <xacro:include filename="bot_gazebo.xacro"/>
     <xacro:include filename="bot_gazebo_plugin.xacro"/>
 

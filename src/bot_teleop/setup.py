@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'bot_teleop = bot_teleop.bot_teleop:main'
+            'teleop_twist_keyboard = bot_teleop.teleop_twist_keyboard:main'
         ],
     },
 )

@@ -53,3 +53,5 @@
     在RVIZ出现这种问题，或者在fixed frame中没有此话题，却在`ros2 topic list`中有，可能是未发布改节点的TF变换
 5. TF_OLD_DATA ignoring data from the past for frame front_right at time 80.737000 according to authority Authority undetectable
     重复发布，或未使用仿真时间
+
+6. 使用`ros2 run tf2_tools view_frame`查看TF树时，如果有节点之间转换时间时时间戳，是因为没有使用仿真时间

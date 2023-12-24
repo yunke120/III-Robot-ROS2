@@ -3,10 +3,13 @@
 ## Getting start
 
 ### Visualize the robot
-#### In rviz2
+In rviz2
 ```shell
 $ ros2 launch bot_bringup rviz2.launch.py
 ```
+<div align="center">
+    <img src="asserts/rviz2.png" width=45%>
+</div>
 
 In gazebo
 ```shell
@@ -23,6 +26,25 @@ shell 2
 ```shell
 $ ros2 run bot_teleop bot_teleop
 ```
+
+## Use cartographer to build maps 
+
+shell1
+```shell
+$ ros2 launch bot_bringup gazebo_substation.launch.py
+```
+shell2
+```shell
+$ ros2 launch bot_cartographer bot_cartographer.launch.py
+```
+shell3
+```shell
+$ ros2 run bot_teleop teleop_twist_keyboard
+```
+<div align="center">
+    <img src="asserts/cartographer_gazobe.png" width=45%>
+    <img src="asserts/cartographer_rviz2.png" width=45%>
+</div>
 
 ## bridge
 

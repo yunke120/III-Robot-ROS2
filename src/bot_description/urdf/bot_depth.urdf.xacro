@@ -23,35 +23,36 @@ grey peripherial evaluation case.
 
 <robot name="sensor_d455" xmlns:xacro="http://ros.org/wiki/xacro">
 
+  <!-- The following values are approximate, and the camera node
+    publishing TF values with actual calibrated camera extrinsic values -->
+  <xacro:property name="d455_cam_depth_to_infra1_offset" value="0.0"/>
+  <xacro:property name="d455_cam_depth_to_infra2_offset" value="-0.095"/>
+  <xacro:property name="d455_cam_depth_to_color_offset" value="-0.059"/>
+
+
+  <!-- The following values model the grey peripherial case for the
+  d455 camera, with the camera joint represented by the actual
+  peripherial camera tripod mount -->
+  <xacro:property name="d455_cam_width" value="0.124"/>
+  <xacro:property name="d455_cam_height" value="0.029"/>
+  <xacro:property name="d455_cam_depth" value="0.026"/>
+  <xacro:property name="d455_cam_mount_from_center_offset" value="0.0158"/>
+  <!-- glass cover is 0.1 mm inwards from front aluminium plate -->
+  <xacro:property name="d455_glass_to_front" value="0.1e-3"/>
+  <!-- see datasheet Revision 009, Fig. 4-4 page 68 -->
+  <xacro:property name="d455_zero_depth_to_glass" value="4.55e-3"/>
+  <!-- convenience precomputation to avoid clutter-->
+  <xacro:property name="d455_mesh_x_offset" value="${d455_cam_mount_from_center_offset-d455_glass_to_front-d455_zero_depth_to_glass}"/>
+
+  <!-- The following offset is relative to the physical d455 camera peripherial
+  camera tripod mount -->
+  <xacro:property name="d455_cam_depth_px" value="${d455_cam_mount_from_center_offset}"/>
+  <xacro:property name="d455_cam_depth_py" value="0.0475"/>
+  <xacro:property name="d455_cam_depth_pz" value="${d455_cam_height/2}"/>
+
+
   <xacro:macro name="sensor_d455" params="parent *origin name:=depth use_nominal_extrinsics:=false">
     <xacro:property name="M_PI" value="3.1415926535897931" />
-
-    <!-- The following values are approximate, and the camera node
-     publishing TF values with actual calibrated camera extrinsic values -->
-    <xacro:property name="d455_cam_depth_to_infra1_offset" value="0.0"/>
-    <xacro:property name="d455_cam_depth_to_infra2_offset" value="-0.095"/>
-    <xacro:property name="d455_cam_depth_to_color_offset" value="-0.059"/>
-
-
-    <!-- The following values model the grey peripherial case for the
-  	d455 camera, with the camera joint represented by the actual
-  	peripherial camera tripod mount -->
-    <xacro:property name="d455_cam_width" value="0.124"/>
-    <xacro:property name="d455_cam_height" value="0.029"/>
-    <xacro:property name="d455_cam_depth" value="0.026"/>
-    <xacro:property name="d455_cam_mount_from_center_offset" value="0.0158"/>
-    <!-- glass cover is 0.1 mm inwards from front aluminium plate -->
-    <xacro:property name="d455_glass_to_front" value="0.1e-3"/>
-    <!-- see datasheet Revision 009, Fig. 4-4 page 68 -->
-    <xacro:property name="d455_zero_depth_to_glass" value="4.55e-3"/>
-    <!-- convenience precomputation to avoid clutter-->
-    <xacro:property name="d455_mesh_x_offset" value="${d455_cam_mount_from_center_offset-d455_glass_to_front-d455_zero_depth_to_glass}"/>
-
-    <!-- The following offset is relative to the physical d455 camera peripherial
-  	camera tripod mount -->
-    <xacro:property name="d455_cam_depth_px" value="${d455_cam_mount_from_center_offset}"/>
-    <xacro:property name="d455_cam_depth_py" value="0.0475"/>
-    <xacro:property name="d455_cam_depth_pz" value="${d455_cam_height/2}"/>
 
     <!-- camera body, with origin at bottom screw mount -->
     <joint name="${name}_joint" type="fixed">
