@@ -98,7 +98,7 @@
 		<sensor type="ray" name="sllidar_sensor">
 			<pose>0 0 0 0 0 0</pose>
 			<always_on>true</always_on>
-			<visualize>true</visualize>
+			<visualize>false</visualize>
 			<update_rate>30</update_rate>
 			<ray>
 				<scan>

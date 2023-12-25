@@ -1,31 +1,37 @@
 # III-Robot-ROS2
 
-## Getting start
+  <p align="center">
+    <img alt="License" src="https://img.shields.io/badge/ROS2-humble-8A2BE2?style=for-the-badge"/>
+    <img alt="License" src="https://img.shields.io/github/license/yunke120/III-Robot-ROS2?style=for-the-badge&logo=github&color=1A91FF"/>
+    <img alt="License" src="https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge"/>
+  </p>
+  <p align="center">Implement the mapping, navigation and positioning of a Mecanum wheel robot in Gazebo.</p>
 
-### Visualize the robot
+## Installation
+```shell
+$ git clone --recursive https://github.com/yunke120/III-Robot-ROS2.git
+$ cd III-Robot-ROS2
+$ rosdep update
+$ rosdep install --from-paths src --ignore-src --rosdistro humble -y
+$ colcon build
+```
+
+## Visualize the robot
 In rviz2
 ```shell
 $ ros2 launch bot_bringup rviz2.launch.py
 ```
-<div align="center">
+<p align="center">
     <img src="asserts/rviz2.png" width=45%>
-</div>
+</p>
 
 In gazebo
 ```shell
 $ ros2 launch bot_bringup gazebo_empty_world.launch.py
 ```
-
-In substation
-
-shell 1
-```shell
-$ ros2 launch bot_bringup gazebo_substation.launch.py
-```
-shell 2
-```shell
-$ ros2 run bot_teleop bot_teleop
-```
+<p align="center">
+    <img src="asserts/gazebo.png" width=45%>
+</p>
 
 ## Use cartographer to build maps 
 
@@ -41,12 +47,13 @@ shell3
 ```shell
 $ ros2 run bot_teleop teleop_twist_keyboard
 ```
-<div align="center">
+<p align="center">
     <img src="asserts/cartographer_gazobe.png" width=45%>
     <img src="asserts/cartographer_rviz2.png" width=45%>
-</div>
+</p>
 
-## bridge
+## Bridge
+ros2 communicates with microcontroller STM32
 
 shell 1
 ```shell
@@ -63,11 +70,14 @@ $ source install/setup.bash
 $ sudo chmod a+rw /dev/ttyACM0
 $ ros2 run micro_ros_agent micro_ros_agent serial -b 115200 --dev /dev/ttyACM0
 ```
-![bridge_demo](./asserts/bridge_demo.png)
 
-## FAQ
- - [FAQ](./FAQ.md)
+<p align="center">
+    <img src="asserts/bridge_demo.png" width=45%>
+</p>
 
-## Refer
+
+## Reference links
  - [Window SSH Linux](https://elementalgrady.com/posts/ubuntu-2204-enable-ssh/)
  - [Gazebo Materials](http://wiki.ros.org/simulator_gazebo/Tutorials/ListOfMaterials)
+ - [qaz9517532846-zm_robot](https://github.com/qaz9517532846/zm_robot.git)
+ - [ROBOTIS-GIT-turtlebot3](https://github.com/ROBOTIS-GIT/turtlebot3.git)
