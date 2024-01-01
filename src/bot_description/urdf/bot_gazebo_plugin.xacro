@@ -16,10 +16,10 @@
 			<publishWheelTF>true</publishWheelTF>
 			<publishOdomTF>true</publishOdomTF>
 			<WheelTorque>30</WheelTorque>
-			<WheelSeparationW>0.35</WheelSeparationW>
-			<WheelSeparationL>0.6</WheelSeparationL>
+			<WheelSeparationW>0.36</WheelSeparationW>
+			<WheelSeparationL>0.32</WheelSeparationL>
 			<wheelAccel>10</wheelAccel>
-			<wheelDiameter>0.13</wheelDiameter>
+			<wheelDiameter>0.127</wheelDiameter>
 			<publishOdom>true</publishOdom>
 			<isRollerModel>true</isRollerModel>
 		</plugin>

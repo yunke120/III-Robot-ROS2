@@ -2,3 +2,5 @@ install/
 log/
 build/
 .vscode/
+src/bot_navigation2/
+src/bot_cartographer/map/*

@@ -7,6 +7,9 @@
     
     <!-- add camera -->
     <xacro:include filename="bot_camera.urdf.xacro"/>
+    <xacro:camera_func parent="base_link_3">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:camera_func>
 
     <!-- add lidar -->
     <xacro:include filename="bot_lidar.urdf.xacro"/>
