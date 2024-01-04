@@ -149,7 +149,7 @@
 			<far>3</far>
 			</clip>
 		</camera>
-		<plugin name="depth_camera_driver" filename="libgazebo_ros_camera.so">
+		<plugin name="bot_depth_camera" filename="libgazebo_ros_camera.so">
 			<camera_name>camera</camera_name>
 			<frame_name>camera</frame_name>
 			<triggered>false</triggered>											
@@ -204,7 +204,7 @@
 			</z>
 			</linear_acceleration>
 		</imu>
-		<plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+		<plugin filename="libgazebo_ros_imu_sensor.so" name="bot_imu">
 			<ros>
 			<remapping>~/out:=imu</remapping>
 			</ros>

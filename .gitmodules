@@ -18,3 +18,7 @@
 	path = src/gazebo_mecanum_plugins
 	url = https://github.com/qaz9517532846/gazebo_mecanum_plugins.git
 	branch = ros2-foxy
+[submodule "src/slam_gmapping"]
+	path = src/slam_gmapping
+	url = https://github.com/yunke120/slam_gmapping.git
+	branch = eloquent-devel
