@@ -5,7 +5,7 @@ options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
   map_frame = "map",            -- 地图坐标系的名称
-  tracking_frame = "base_footprint",    -- 用于跟踪的坐标系的名称
+  tracking_frame = "base_footprint",    -- 用于跟踪的坐标系的名称 如果使用gazebo使用base_footprint，而不是imu_link
   published_frame = "odom",             -- 发布的坐标系的名称
   odom_frame = "odom",          -- 这个odom是cartographer提供的，需要与机器人本身的odom区分开
   provide_odom_frame =  false, -- 不发布从odom_frame 到 published_frame 的 TF 转换
@@ -41,9 +41,11 @@ TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true  -- 是否使�
 TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.linear_search_window = 0.1 -- 在线相关扫描匹配的线性搜索窗口大小
 TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.translation_delta_cost_weight = 10. -- 在线相关扫描匹配的平移和旋转权重
 TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.rotation_delta_cost_weight = 1e-1
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 40
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 2e2
 
 POSE_GRAPH.optimization_problem.huber_scale = 1e2 -- Huber损失函数的尺度，用于优化问题的鲁棒性
-POSE_GRAPH.optimize_every_n_nodes = 35            -- 每优化多少个节点执行一次位姿图优化
+POSE_GRAPH.optimize_every_n_nodes = 5            -- 每优化多少个节点执行一次位姿图优化 35   0:关闭全局SLAM 尽量小
 POSE_GRAPH.constraint_builder.min_score = 0.65    -- 约束建立的最小分数，用于滤除低置信度的约束
 
 return options

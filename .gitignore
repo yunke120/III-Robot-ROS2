@@ -3,6 +3,4 @@ log/
 build/
 .vscode/
 src/bot_cartographer/map/*
-src/bot_navigation2/
-src/bot_programing/
 src/slam_gmapping/slam_gmapping/map/*

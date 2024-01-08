@@ -1,0 +1,26 @@
+from setuptools import find_packages, setup
+
+package_name = 'bot_programing'
+
+setup(
+    name=package_name,
+    version='0.0.0',
+    packages=find_packages(exclude=['test']),
+    data_files=[
+        ('share/ament_index/resource_index/packages',
+            ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+    ],
+    install_requires=['setuptools'],
+    zip_safe=True,
+    maintainer='yk',
+    maintainer_email='fj_18860352816@163.com',
+    description='TODO: Package description',
+    license='TODO: License declaration',
+    tests_require=['pytest'],
+    entry_points={
+        'console_scripts': [
+            'bot_move = bot_programing.bot_move:main',
+        ],
+    },
+)

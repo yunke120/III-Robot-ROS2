@@ -5,8 +5,8 @@
 	<xacro:include filename="$(find bot_description)/urdf/bot_roller.transmission.xacro"/>
 
 
-	<!-- base_link_1 gazebo -->
-	<gazebo reference="base_link_1">
+	<!-- base_link gazebo -->
+	<gazebo reference="base_link">
 		<selfCollide>false</selfCollide>
 		<gravity>true</gravity>
 		<mu1>10</mu1>

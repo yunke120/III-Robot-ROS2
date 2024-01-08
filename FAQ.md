@@ -55,3 +55,5 @@
     重复发布，或未使用仿真时间
 
 6. 使用`ros2 run tf2_tools view_frame`查看TF树时，如果有节点之间转换时间时时间戳，是因为没有使用仿真时间
+7. rosdep update timeout
+    [rosdep update 出现time out 解决办法（绝对有效）](https://blog.csdn.net/zhanghanningleaf/article/details/114710849)

@@ -37,8 +37,8 @@
     <xacro:property name="motor_mass" value="0.3" />
 
     <link name="base_footprint"/>
-    <!--   Define three chassis base_link_1 base_link_2 base_link_3-->
-    <link name="base_link_1">
+    <!--   Define three chassis base_link base_link_2 base_link_3-->
+    <link name="base_link">
         <visual>
             <geometry>
                 <box size="${bot_length} ${bot_width} ${bot_height}"/>
@@ -54,7 +54,7 @@
     </link>
     <joint name="base_joint" type="fixed">
         <parent link="base_footprint"/>
-        <child link="base_link_1"/>
+        <child link="base_link"/>
         <origin xyz="0.0 0.0 ${z_offset+bot_height/2}"/>
     </joint>
 
@@ -90,7 +90,7 @@
     </link>
 
     <joint name="base12_joint" type="fixed">
-        <parent link="base_link_1"/>
+        <parent link="base_link"/>
         <child link="base_link_2"/>
         <origin xyz="0.0 0.0 ${pillar_height_1+bot_height}"/>
     </joint>
@@ -123,7 +123,7 @@
         </link>
 
         <joint name="${link_name}_joint" type="continuous">
-            <parent link="base_link_1"/>
+            <parent link="base_link"/>
             <child link="${link_name}"/> 
             <origin xyz="${wheel_joint_x * front_flag} ${wheel_joint_y * left_flag} ${wheel_joint_z}"/>
             <axis xyz="0 1 0"/>
@@ -132,7 +132,7 @@
         <xacro:mecanum_wheel name="${link_name}" roller_angle = "${angle*roller_angle}"/>
 
         <joint name="${link_name}_joint" type="continuous">
-            <parent link="base_link_1"/>
+            <parent link="base_link"/>
             <child link="${link_name}"/> 
             <origin xyz="${wheel_joint_x * front_flag} ${wheel_joint_y * left_flag} ${wheel_joint_z}" rpy="${3*pi/2} 0 0"/>
             <axis xyz="0 0 1"/>
@@ -170,7 +170,7 @@
         </link>
 
         <joint name="${link_name}_p1base_joint" type="fixed">
-            <parent link="base_link_1"/>
+            <parent link="base_link"/>
             <child link="${link_name}_p1"/>
             <origin xyz="${(bot_length/2-pillar_length/2) * front_flag} ${(bot_width/3) * left_flag} ${bot_height/2+pillar_height_1/2}"/>
         </joint>
@@ -200,7 +200,7 @@
         </link>
 
         <joint name="${link_name}_motor_joint" type="fixed">
-            <parent link="base_link_1"/>
+            <parent link="base_link"/>
             <child link="${link_name}_motor"/> 
             <origin xyz="${wheel_joint_x * front_flag} ${((bot_width-motor_length)/2+wheel_base_dis) * left_flag} ${wheel_joint_z}"/>
             <axis xyz="0 1 0"/>
